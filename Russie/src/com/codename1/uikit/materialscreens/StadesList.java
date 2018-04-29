@@ -285,6 +285,26 @@ public class StadesList extends SideMenuBaseForm
                             {
                                 dateString = "Il y'a: "+diffDays+" jour(s)"; 
                             }
+                            
+                            if (diffDays == 1) 
+                            {
+                                dateString = "Hier"; 
+                            }
+                            
+                            if (diffDays == 7) 
+                            {
+                                dateString = "Il y'a une semaine"; 
+                            }
+                            
+                            if (diffDays == 30) 
+                            {
+                                dateString = "Il y'a un mois"; 
+                            }
+                            
+                            if (diffDays == 365) 
+                            {
+                                dateString = "Il y'a un an"; 
+                            }
                         
                         Label l = new Label(nom);
                         Label l2 = new Label(prenom);
