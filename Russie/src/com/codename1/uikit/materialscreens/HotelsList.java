@@ -5,6 +5,7 @@ import com.codename1.components.SpanLabel;
 import com.codename1.db.Cursor;
 import com.codename1.db.Database;
 import com.codename1.db.Row;
+import com.codename1.l10n.ParseException;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
@@ -237,17 +238,41 @@ public class HotelsList extends SideMenuBaseForm
                         
                         String nom = r.getString(1)+" a commenté:\n";
                         prenom = r.getString(2)+"\n";
-                        String dateString = "le: "+r.getString(3);
+                        Date dt = new Date();
+                        String str = new SimpleDateFormat("dd/MM/yyyy : HH:mm").format(dt);
+                        SimpleDateFormat format  = new SimpleDateFormat("dd/MM/yyyy : HH:mm"); 
+                        Date d1 = null;
+                        Date d2 = null;
                         Container contr = new Container(new BoxLayout(BoxLayout.Y_AXIS));
                         contr.getStyle().setBorder(Border.createLineBorder(1, 1));
+                        try {
+			d1 = format.parse(r.getString(3));
+			d2 = format.parse(str);
+
+			//in milliseconds
+			long diff = d2.getTime() - d1.getTime();
+
+			long diffSeconds = diff / 1000 % 60;
+			long diffMinutes = diff / (60 * 1000) % 60;
+			long diffHours = diff / (60 * 60 * 1000) % 24;
+			long diffDays = diff / (24 * 60 * 60 * 1000);
+
+			System.out.print(diffDays + " days, ");
+			System.out.print(diffHours + " hours, ");
+			System.out.print(diffMinutes + " minutes, ");
+			System.out.print(diffSeconds + " seconds.");
+                        String dateString = "Il y a: "+diffDays+" jour(s) "+diffHours+" heure(s) "+diffMinutes+" minute(s)"; 
+                        
                         
                         Label l = new Label(nom);
                         Label l2 = new Label(prenom);
-                        Label l3 = new Label(dateString);
+                        SpanLabel l3 = new SpanLabel(dateString);
                         
                         contr.add(l);
                         contr.add(l2);
                         contr.add(l3);
+		} catch (IOException | ParseException e) {
+		}
                         if (r.getString(1).equals(u.getUsername())) 
                         {
                            addcmt.setEnabled(false);
