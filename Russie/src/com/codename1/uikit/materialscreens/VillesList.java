@@ -266,13 +266,18 @@ public class VillesList extends SideMenuBaseForm
 			System.out.print(diffHours + " hours, ");
 			System.out.print(diffMinutes + " minutes, ");
 			System.out.print(diffSeconds + " seconds.");
-                        String dateString = "Il y a: "+diffDays+" jour(s) "+diffHours+" heure(s) "+diffMinutes+" minute(s)"; 
+                        String dateString = "Il y'a: "+diffDays+" jour(s) "+diffHours+" heure(s) "+diffMinutes+" minute(s)"; 
                         if (diffDays == 0 && diffMinutes > 0) 
                             {
                                 dateString = "Il y'a: "+diffHours+" heure(s)"; 
                             }
                             
-                            if (diffDays == 0 && diffHours == 0) 
+                            if (diffDays == 0 && diffHours == 0 && diffMinutes == 0) 
+                            {
+                                dateString = "A l'instant"; 
+                            }
+ 
+                            if (diffDays == 0 && diffHours == 0 && diffMinutes > 0) 
                             {
                                 dateString = "Il y'a: "+diffMinutes+" minute(s)"; 
                             }

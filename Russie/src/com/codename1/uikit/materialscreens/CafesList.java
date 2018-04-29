@@ -266,8 +266,13 @@ public class CafesList extends SideMenuBaseForm
                             {
                                 dateString = "Il y'a: "+diffHours+" heure(s)"; 
                             }
+                            
+                            if (diffDays == 0 && diffHours == 0 && diffMinutes == 0) 
+                            {
+                                dateString = "A l'instant"; 
+                            }
  
-                            if (diffDays == 0 && diffHours == 0) 
+                            if (diffDays == 0 && diffHours == 0 && diffMinutes > 0) 
                             {
                                 dateString = "Il y'a: "+diffMinutes+" minute(s)"; 
                             }
