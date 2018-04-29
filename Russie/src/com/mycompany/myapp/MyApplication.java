@@ -84,6 +84,7 @@ public class MyApplication {
             ((Dialog)current).dispose();
             current = getCurrentForm();
         }
+        clearStorageCache();
     }
     
     public void destroy() {

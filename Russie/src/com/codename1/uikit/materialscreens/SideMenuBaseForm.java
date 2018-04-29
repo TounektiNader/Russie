@@ -72,6 +72,7 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Programme", FontImage.MATERIAL_TRENDING_UP,  e ->new Affichage(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Profil", FontImage.MATERIAL_ACCESS_TIME,  e -> new ProfileForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Mes Bets", FontImage.MATERIAL_SETTINGS,  e -> new MesBets(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Guide de supporter", FontImage.MATERIAL_HOTEL,  e ->new HomeMenu(res).getF().show());
         getToolbar().addMaterialCommandToSideMenu("  Settings Profil ", FontImage.MATERIAL_EXIT_TO_APP,  e -> new CameraUser(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
     }
