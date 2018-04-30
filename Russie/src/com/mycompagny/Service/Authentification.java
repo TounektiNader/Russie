@@ -66,7 +66,7 @@ public class Authentification {
     
      public void ajoutBet(User u,String conf) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://127.0.0.1:8000/adduser/" + u.getNom() + "/" + u.getPrenom()+"/"+u.getUsername()+ "/" +u.getUsername_canonical() +"/" +u.getEmail()+ "/" +u.getEmail_canonical()+ "/" +u.getPassword()+ "/" +conf+ "/" +u.getNum()+ "/" +u.getNationalite();
+        String Url = "http://127.0.0.1:8001/adduser/" + u.getNom() + "/" + u.getPrenom()+"/"+u.getUsername()+ "/" +u.getUsername_canonical() +"/" +u.getEmail()+ "/" +u.getEmail_canonical()+ "/" +u.getPassword()+ "/" +conf+ "/" +u.getNum()+ "/" +u.getNationalite();
         con.setUrl(Url);
 
         System.out.println("tt");
@@ -90,7 +90,7 @@ public class Authentification {
      
      public void updateUser(User u) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://127.0.0.1:8000/valideU/" + u.getId() ;
+        String Url = "http://127.0.0.1:8001/valideU/" + u.getId() ;
         con.setUrl(Url);
 
         System.out.println("tt");

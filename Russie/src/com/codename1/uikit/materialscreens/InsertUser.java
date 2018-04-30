@@ -71,6 +71,8 @@ User u = new User();
         Container c = new Container(BoxLayout.y());
         TextField login = new TextField(u.getUsername(), "Username", 15, TextField.EMAILADDR);
         login.getAllStyles().setFgColor(0xF69602);
+         TextField password = new TextField("", "Password", 15, TextField.PASSWORD);
+        password.getAllStyles().setFgColor(0xF69602);
         //  TextField password = new TextField("", "Password", 15, TextField.PASSWORD) ;
         TextField nom = new TextField(u.getNom(), "Nom", 15, TextField.EMAILADDR);
         nom.getAllStyles().setFgColor(0xF69602);
@@ -86,13 +88,14 @@ User u = new User();
         natio.setHeight(10);
         natio.setWidth(10);
         login.getAllStyles().setMargin(LEFT, 0);
-        //   password.getAllStyles().setMargin(LEFT, 0);
+        password.getAllStyles().setMargin(LEFT, 0);
         nom.getAllStyles().setMargin(LEFT, 0);
         prenom.getAllStyles().setMargin(LEFT, 0);
         mail.getAllStyles().setMargin(LEFT, 0);
         num.getAllStyles().setMargin(LEFT, 0);
         natio.getAllStyles().setMargin(LEFT, 0);
         Label loginIcon = new Label("", "TextField");
+        Label loginPass = new Label("", "TextField");
         Label nomIcon = new Label("", "TextField");
         Label prenomIcon = new Label("", "TextField");
         Label mailIcon = new Label("", "TextField");
@@ -100,12 +103,14 @@ User u = new User();
         Label natioanliteIcon = new Label("", "TextField");
 
         loginIcon.getAllStyles().setMargin(RIGHT, 0);
+        loginPass.getAllStyles().setMargin(RIGHT, 0);
         nomIcon.getAllStyles().setMargin(RIGHT, 0);
         prenomIcon.getAllStyles().setMargin(RIGHT, 0);
         mailIcon.getAllStyles().setMargin(RIGHT, 0);
         numIcon.getAllStyles().setMargin(RIGHT, 0);
         natioanliteIcon.getAllStyles().setMargin(RIGHT, 0);
         FontImage.setMaterialIcon(loginIcon, FontImage.MATERIAL_PERSON_OUTLINE, 5);
+        FontImage.setMaterialIcon(loginPass, FontImage.MATERIAL_LOCK_OUTLINE, 5);
         FontImage.setMaterialIcon(nomIcon, FontImage.MATERIAL_PERSON_OUTLINE, 5);
         FontImage.setMaterialIcon(prenomIcon, FontImage.MATERIAL_PERSON_OUTLINE, 5);
         FontImage.setMaterialIcon(mailIcon, FontImage.MATERIAL_MAIL, 5);
@@ -133,7 +138,7 @@ User u = new User();
             u.setPrenom(prenom.getText());
             u.setNum(num.getText());
             u.setNationalite(natio.getSelectedItem().toString());
-
+            u.setPassword(password.getText());
  Authentification a = new Authentification();
  ServiceResultat rs = new ServiceResultat();
                         
@@ -144,6 +149,7 @@ String z=rs.code();
         });
         Container by = BoxLayout.encloseY(
                 BorderLayout.center(login).add(BorderLayout.WEST, loginIcon),
+                BorderLayout.center(password).add(BorderLayout.WEST, loginPass),
                 BorderLayout.center(nom).add(BorderLayout.WEST, nomIcon),
                 BorderLayout.center(prenom).add(BorderLayout.WEST, prenomIcon),
                 BorderLayout.center(mail).add(BorderLayout.WEST, mailIcon),
