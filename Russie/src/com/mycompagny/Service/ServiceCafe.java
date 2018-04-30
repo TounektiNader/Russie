@@ -49,7 +49,8 @@ public class ServiceCafe {
     public ArrayList<Cafes> getList2() {
         ArrayList<Cafes> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/cafesjson");
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/cafesjson");
+        con.setUrl("http://127.0.0.1:8000/cafesjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override

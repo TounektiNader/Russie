@@ -49,7 +49,8 @@ public class ServiceHotel {
     public ArrayList<Hotels> getList2() {
         ArrayList<Hotels> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/hotelsjson");
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/hotelsjson");
+        con.setUrl("http://127.0.0.1:8000/hotelsjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override

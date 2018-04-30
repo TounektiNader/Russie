@@ -49,7 +49,8 @@ public class ServiceResto {
     public ArrayList<Restos> getList2() {
         ArrayList<Restos> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/restosjson");
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/restosjson");
+        con.setUrl("http://127.0.0.1:8000/restosjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override

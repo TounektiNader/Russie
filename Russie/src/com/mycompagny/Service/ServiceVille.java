@@ -48,7 +48,8 @@ public class ServiceVille {
     public ArrayList<Villes> getList2() {
         ArrayList<Villes> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+        con.setUrl("http://127.0.0.1:8000/villesjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override
