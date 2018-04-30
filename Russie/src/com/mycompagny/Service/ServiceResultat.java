@@ -33,7 +33,7 @@ public class ServiceResultat {
     public ArrayList<Resultat> getList2() {
         ArrayList<Resultat> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8000/resultatJ");
+        con.setUrl("http://127.0.0.1:8001/resultatJ");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -187,7 +187,7 @@ public class ServiceResultat {
        
         ArrayList<Equipe> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8000/EquipeGagne/"+idpartie);
+        con.setUrl("http://127.0.0.1:8001/EquipeGagne/"+idpartie);
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -222,7 +222,7 @@ public class ServiceResultat {
    public String code(){
    ArrayList<Equipe> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8000/numbr");
+        con.setUrl("http://127.0.0.1:8001/numbr");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

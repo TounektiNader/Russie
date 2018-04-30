@@ -19,6 +19,7 @@
 
 package com.codename1.uikit.materialscreens;
 
+import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
@@ -36,6 +37,7 @@ import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import static com.codename1.uikit.materialscreens.Affichage.resultat;
 import com.company.Entites.User;
@@ -57,6 +59,7 @@ import java.util.Random;
  * @author Shai Almog
  */
 public class LoginForm extends Form {
+ String message="";
     public LoginForm(Resources theme) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
         setUIID("LoginForm");
@@ -90,6 +93,22 @@ public class LoginForm extends Form {
 
                     NetworkManager.getInstance().addToQueueAndWait(request);
                     Map<String,Object> result= new JSONParser().parseJSON(new InputStreamReader(new ByteArrayInputStream(request.getResponseData()), "UTF-8"));
+                  
+                      message= new String(request.getResponseData(), "utf-8");
+                                if(message.equals("error")){
+                                
+                                   ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vérifier Vos Cordonées");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
+                                
+                                }
+                                else{
+                                  
+                    
                     if(!result.get("id").equals("-1")) 
                     { System.out.println(Integer.parseInt((String)result.get("id")));
                         Authentification a = new Authentification();
@@ -114,8 +133,7 @@ public class LoginForm extends Form {
                         
             new WalkthruForm(theme).show();}
                        }
-                      // else
-                        //    System.out.println("oppppppppp false");
+                   
            // Toolbar.setGlobalToolbar(true);
                         
                         
@@ -124,15 +142,27 @@ public class LoginForm extends Form {
                      // motE.setText(u.getUsername());
                       //  f1.show();
                     
-                    else System.out.println("false");
+                    
+                                }
+                   
                   } catch (IOException ex) {
                     //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                   
                   }
 
             }
             
             
-            
+                else{
+                      ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez Remplir tous les champs");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
+                
+                }
                 
          
          
