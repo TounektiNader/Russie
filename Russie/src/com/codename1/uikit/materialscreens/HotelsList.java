@@ -262,42 +262,52 @@ public class HotelsList extends SideMenuBaseForm
 			System.out.print(diffMinutes + " minutes, ");
 			System.out.print(diffSeconds + " seconds.");
                         String dateString = "Il y'a: "+diffDays+" jour(s) "+diffHours+" heure(s) "+diffMinutes+" minute(s)"; 
-                        if (diffDays == 0 && diffMinutes > 0) 
+                         if (diffDays == 0 && diffMinutes > 0) 
                             {
-                                dateString = "Il y'a: "+diffHours+" heure(s)"; 
+                                dateString = "Il y'a: "+diffHours+" heures"; 
+                            }
+                            
+                            if (diffDays == 0 && diffHours == 1) 
+                            {
+                                dateString = "Il y'a une heure"; 
                             }
                             
                             if (diffDays == 0 && diffHours == 0 && diffMinutes == 0) 
                             {
                                 dateString = "A l'instant"; 
                             }
- 
-                            if (diffDays == 0 && diffHours == 0 && diffMinutes > 0) 
+                            
+                            if (diffDays == 0 && diffHours == 0 && diffMinutes == 1) 
                             {
-                                dateString = "Il y'a: "+diffMinutes+" minute(s)"; 
+                                dateString = "Il y'a une minute"; 
+                            }
+ 
+                            if (diffDays == 0 && diffHours == 0 && diffMinutes > 1) 
+                            {
+                                dateString = "Il y'a: "+diffMinutes+" minutes"; 
                             }
                             
                             if (diffDays > 0) 
                             {
                                 dateString = "Il y'a: "+diffDays+" jour(s)"; 
-                            }
+                            }             
                             
                             if (diffDays == 1) 
                             {
                                 dateString = "Hier"; 
                             }
                             
-                            if (diffDays == 7) 
+                            if (diffDays > 7 && diffDays <14) 
                             {
                                 dateString = "Il y'a une semaine"; 
                             }
                             
-                            if (diffDays == 30) 
+                            if (diffDays > 30 && diffDays < 60) 
                             {
                                 dateString = "Il y'a un mois"; 
                             }
                             
-                            if (diffDays == 365) 
+                            if (diffDays > 365) 
                             {
                                 dateString = "Il y'a un an"; 
                             }
