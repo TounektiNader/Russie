@@ -47,7 +47,7 @@ public class HotelsList extends SideMenuBaseForm
 {
     Form f;
     String url2 = "/img";
-    String url = "http://localhost/ValidationWeb/russia/web/uploads/images/";
+    String url = "http://localhost/russia/web/uploads/images/";
     EncodedImage enc;
     Database db;
     boolean created =false;
