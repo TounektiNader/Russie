@@ -42,6 +42,7 @@ public class HomeMenu extends SideMenuBaseForm
     Form f4;
     Form f5;
     Form f6;
+     Image profilePic ;
     public HomeMenu(Resources res) 
     {
         
@@ -50,7 +51,11 @@ public class HomeMenu extends SideMenuBaseForm
         //        super(BoxLayout.y());
         Toolbar tb = f.getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+      
+          if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);

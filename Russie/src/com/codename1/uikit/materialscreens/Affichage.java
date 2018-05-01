@@ -47,13 +47,18 @@ public class Affichage extends SideMenuBaseForm {
      private Image imgHome;
      private Image imgAway;
     private EncodedImage enc ;
+     Image profilePic ;
  public static Resultat resultat = new Resultat();
     public Affichage(Resources res) {
         super(BoxLayout.y());
 
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+     if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
+        
 
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
@@ -221,7 +226,7 @@ int j = 0;
         grid.getUnselectedStyle().setBackgroundType(Style.BACKGROUND_GRADIENT_RADIAL);
         
         if(ress.getPartie().getEtatMatch().equals("Jouee")){
-          grid.getUnselectedStyle().setBackgroundGradientEndColor(0xCDDE47);
+          grid.getUnselectedStyle().setBackgroundGradientEndColor(0xC4D7ED);
          grid.getUnselectedStyle().setBackgroundGradientStartColor(0xeae4e4);
         }
       

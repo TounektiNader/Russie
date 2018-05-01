@@ -36,6 +36,7 @@ import java.io.IOException;
 public class MapForm extends SideMenuBaseForm
 {
     Form hi;
+    Image profilePic ;
 
     public MapForm(Resources res) 
     {
@@ -44,7 +45,13 @@ public class MapForm extends SideMenuBaseForm
         
         Toolbar tb = hi.getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+     
+          if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
+        
+        
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);

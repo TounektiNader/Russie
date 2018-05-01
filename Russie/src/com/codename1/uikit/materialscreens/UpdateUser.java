@@ -56,12 +56,25 @@ public class UpdateUser extends SideMenuBaseForm {
     private EncodedImage jet;
     String urlphp = "http://localhost/mobile/russia/updateUser.php";
     public static String reponse = "";
-
+   Image profilePic ;
     public UpdateUser(Resources res) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+   
+        
+          if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
+         
+          tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, g->
+            {
+            
+            new ProfileForm(res).show();
+            
+            });
+        
         Image mask = res.getImage("round-mask.png");
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
         Label profilePicLabel = new Label(profilePic, "ProfilePicTitle");
@@ -115,16 +128,21 @@ public class UpdateUser extends SideMenuBaseForm {
     private void addButtonBottom(Image arrowDown, User user, int color, boolean first,Resources res) {
         Container c = new Container(BoxLayout.y());
         TextField login = new TextField(u.getUsername(), "Username", 15, TextField.EMAILADDR);
-        login.getAllStyles().setFgColor(0xF69602);
+           login.setUIID("txtFieldText");
+        login.getAllStyles().setFgColor(0x132959);
         //  TextField password = new TextField("", "Password", 15, TextField.PASSWORD) ;
         TextField nom = new TextField(u.getNom(), "Nom", 15, TextField.EMAILADDR);
-        nom.getAllStyles().setFgColor(0xF69602);
+         nom.setUIID("txtFieldText");
+        nom.getAllStyles().setFgColor(0x132959);
         TextField prenom = new TextField(u.getPrenom(), "Prenom", 15, TextField.EMAILADDR);
-        prenom.getAllStyles().setFgColor(0xF69602);
+       prenom.setUIID("txtFieldText");
+        prenom.getAllStyles().setFgColor(0x132959);
         TextField mail = new TextField(u.getEmail(), "Mail", 15, TextField.EMAILADDR);
-        mail.getAllStyles().setFgColor(0xF69602);
+             mail.setUIID("txtFieldText");
+        mail.getAllStyles().setFgColor(0x132959);
         TextField num = new TextField(u.getNum(), "+216XXXXXXXX", 15, TextField.PHONENUMBER);
-        num.getAllStyles().setFgColor(0xF69602);
+         num.setUIID("txtFieldText");
+        num.getAllStyles().setFgColor(0x132959);
         ComboBox natio = new ComboBox("Tunisien", "Belge", "Français", "Marocain", "Islandais");
 
         natio.getAllStyles().setBgColor(0xFFFFFF);
@@ -235,6 +253,8 @@ request.addArgument("nationalite", u.getNationalite());
         by.getUnselectedStyle().setBackgroundType(Style.BACKGROUND_GRADIENT_RADIAL);
         by.getUnselectedStyle().setBackgroundGradientEndColor(0xE1E6FA);
         by.getUnselectedStyle().setBackgroundGradientStartColor(0xeae4e4);
+        by.getStyle().setBgTransparency(50);
+       
         add(BorderLayout.CENTER, by);
 
         // for low res and landscape devices

@@ -12,6 +12,7 @@ package com.codename1.uikit.materialscreens;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.MultiButton;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.ComboBox;
@@ -31,6 +32,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import static com.codename1.uikit.materialscreens.Affichage.resultat;
 import com.company.Entites.Equipe;
@@ -50,14 +52,24 @@ public class AjoutBet extends SideMenuBaseForm {
     private EncodedImage jet;
     private Image imgAway;
     private EncodedImage enc ;
-    
+     Image profilePic ;
     public AjoutBet(Resources res) {
         super(BoxLayout.y());
 
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+        if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
 
+          tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, g->
+            {
+            
+            new Affichage(res).show();
+            
+            });
+        
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
@@ -117,12 +129,17 @@ public class AjoutBet extends SideMenuBaseForm {
         Image imHome = URLImage.createToStorage(placeholder,"imageEquipe"+Affichage.resultat.getPartie().getHome().getIDEquipe(),Affichage.resultat.getPartie().getHome().getDrapeau(),null);
         Image imAway = URLImage.createToStorage(placeholder,"imageEquipe"+Affichage.resultat.getPartie().getAway().getIDEquipe(),Affichage.resultat.getPartie().getAway().getDrapeau(),null);
 imHome.fill( 30, 30);
+          
+        Label create = new Button("Votre Choix");
+        create.setUIID("CreateNewAccountButton");
+        create.getAllStyles().setFgColor(0xf1b00a);
+
         
         RadioButton rb1 = new RadioButton(Affichage.resultat.getPartie().getHome().getNomEquipe(),imHome.fill( 30, 30));
         RadioButton rb2 = new RadioButton(Affichage.resultat.getPartie().getAway().getNomEquipe(),imAway.fill(30,30));
         RadioButton rb3 = new RadioButton("Null");
         new ButtonGroup(rb1, rb2, rb3);
-        
+     
         equipesAparier.add(rb1);
         equipesAparier.add(rb2);
         equipesAparier.add(rb3);
@@ -150,7 +167,7 @@ imHome.fill( 30, 30);
        betService.ajoutBet(bet);
            Dialog.show("Confirmation","Votre bet a été ajouté avec succès","OK",null);
        
-           
+           new MesBets(res).show();
            
        }
        else if(rb2.isSelected()){
@@ -162,6 +179,7 @@ imHome.fill( 30, 30);
            dblocal.updatejeton(sold,u.getId());
        betService.ajoutBet(bet);
           Dialog.show("Confirmation","Votre bet a été ajouté avec succès","OK",null);
+           new MesBets(res).show();
        }
        else if(rb3.isSelected()){
            Bet bet = new Bet();
@@ -174,12 +192,21 @@ imHome.fill( 30, 30);
            
            betService.ajoutBet(bet);
               Dialog.show("Confirmation","Votre bet a été ajouté avec succès","OK",null);
+               new MesBets(res).show();
        }
        else{
-       Dialog.show("Error","Vous devez Choisir une resultat","OK",null);
+     
+              ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez Choisir une resultat ");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
        }
            
         });
+       cbet.add(create);
         cbet.add(equipesAparier);
         cbet.add(bt);
         
