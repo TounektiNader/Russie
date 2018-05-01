@@ -19,7 +19,7 @@ public class Restos
 
     public Restos() 
     {
-        
+        RestoVille = new Villes();
     }
 
     public int getId() {

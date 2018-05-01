@@ -67,12 +67,16 @@ public class ServiceCafe {
                     {
                         
                         Cafes task = new Cafes(); 
+                        
                         float id = Float.parseFloat(obj.get("idcafe").toString());
+                        Map<String, Object> etab = (Map<String, Object>) obj.get("idville");
                         task.setId((int) id);
                         task.setNom(obj.get("nomcafe").toString());
                         task.setDetails(obj.get("detailscafe").toString());
                         task.setPosition(obj.get("positioncafe").toString());
                         task.setPhoto(obj.get("photocafe").toString());
+                        task.getCafeVille().setNom(etab.get("nomville").toString());
+                        System.out.println(etab.get("nomville").toString());
                         listTasks.add(task);
 
                     }

@@ -419,6 +419,7 @@ public class HotelsList extends SideMenuBaseForm
                         Label label = new Label();
                         label.getStyle().setBorder(Border.createLineBorder(1, 1));
                         Label no = new Label(pr.getNom());
+                        Label ville = new Label(pr.getHotelVille().getNom());
                         System.out.println(pr.getPhoto());
                         int deviceWidth = Display.getInstance().getDisplayWidth() / 4;
                                 Image placeholder = Image.createImage(deviceWidth, deviceWidth); //square image set to 10% of screen width
@@ -432,6 +433,7 @@ public class HotelsList extends SideMenuBaseForm
                         c.add(cnt);
                         Container cnt1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
                         cnt.add(no);
+                        cnt.add(ville);
                         cnt1.add(btn3);
                         cnt1.add(btmap);
                         Container cc = new Container(new BoxLayout(BoxLayout.Y_AXIS));

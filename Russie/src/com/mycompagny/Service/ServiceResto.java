@@ -67,11 +67,14 @@ public class ServiceResto {
                     {
                         Restos task = new Restos();   
                         float id = Float.parseFloat(obj.get("idresto").toString());
+                        Map<String, Object> etab = (Map<String, Object>) obj.get("idville");
                         task.setId((int) id);
                         task.setNom(obj.get("nomresto").toString());
                         task.setDetails(obj.get("detailsresto").toString());
                         task.setPosition(obj.get("positionresto").toString());
                         task.setPhoto(obj.get("photoresto").toString());
+                        task.getRestoVille().setNom(etab.get("nomville").toString());
+                        System.out.println(etab.get("nomville").toString());
                         listTasks.add(task);
 
                     }

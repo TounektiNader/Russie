@@ -11,7 +11,9 @@ public class Stades
     String Position;
     Villes StadeVille;
 
-    public Stades() {
+    public Stades() 
+    {
+        StadeVille = new Villes();
     }
 
     public Stades(String Nom, String Fondation, String Capacite, String Photo, String Equipelocale, String Position, Villes StadeVille) {

@@ -19,7 +19,7 @@ public class Hotels
 
     public Hotels() 
     {
-        
+        HotelVille = new Villes();
     }
 
     public int getId() {
