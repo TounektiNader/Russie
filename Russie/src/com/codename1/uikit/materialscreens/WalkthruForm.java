@@ -45,12 +45,14 @@ import com.codename1.ui.util.Resources;
 import java.io.IOException;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.plaf.UIManager;
+
 /**
  * A swipe tutorial for the application
  *
  * @author Shai Almog
  */
 public class WalkthruForm extends Form {
+      public static Image capturedImage;
     public WalkthruForm(Resources res) {
         super(new LayeredLayout());
         Toolbar.setGlobalToolbar(true);
@@ -91,22 +93,63 @@ public class WalkthruForm extends Form {
                 bottomSpace
         ));
         tab1.setUIID("WalkthruTab1");
-        tab1.getAllStyles().setBgImage(res.getImage("russia2018.jpg"));
-        getAllStyles().setBgImage(res.getImage("russia2018.jpg"));
+          tab1.getStyle().setBgTransparency(50);
+        getAllStyles().setBgImage(res.getImage("rrussia2018.jpg"));
         walkthruTabs.addTab("", tab1);
+      //////////////////////////////////////////////////////////
+          Label picture = new Label("", "Container");
+        Style s = UIManager.getInstance().getComponentStyle("TitleCommand");
+Image camera = FontImage.createMaterial(FontImage.MATERIAL_CAMERA,s);
+
+    getToolbar().addCommandToRightBar("", camera, (ev) -> {
+    try {
+        int width = Display.getInstance().getDisplayWidth();
+        
+          capturedImage = Image.createImage(Capture.capturePhoto(width, -1));
+                             // String filePath = Capture.capturePhoto();
+                            //System.out.println(filePath);
+//if(filePath != null) {
+//    Util.copy(FileSystemStorage.getInstance().openInputStream(filePath), Storage.getInstance().createOutputStream("nader"));
+//  
+//        
+//}
+      int widthd = Display.getInstance().getDisplayWidth();
+   
+       
+    Image roundMask = Image.createImage(width, capturedImage.getHeight(), 0xff000000);
       
+        
+        Graphics gr = roundMask.getGraphics();
+        gr.setColor(0xffffff);
+        gr.fillArc(0, 0, width, width, 0, 360);
+        Object mask = roundMask.createMask();
+        capturedImage = capturedImage.applyMask(mask);
+        picture.setIcon(capturedImage);
+        
+        
+    
+        
+    } catch(IOException err) {
+        Log.e(err);
+    }
+});
+        
+        
+        ///////////////////////////////////////////////////////
         Label bottomSpaceTab2 = new Label();
         
         Container tab2 = BorderLayout.centerAbsolute(BoxLayout.encloseY(
-                new Label(duke, "ProfilePic"),
-                new Label("Codename One", "WalkthruWhite"),
-                new SpanLabel("Write once run anywhere native mobile development " +
-                                            "Get Java working on all devices as it was always meant " +
-                                            "to be!",  "WalkthruBody"),
+              //  new Label(duke, "ProfilePic"),
+                new Label("Photo Profil", "WalkthruWhite"),
+               // new SpanLabel("Write once run anywhere native mobile development " +
+                        //                    "Get Java working on all devices as it was always meant " +
+                          //                  "to be!",  "WalkthruBody"),
+                picture,
                 bottomSpaceTab2
         ));
         
         tab2.setUIID("WalkthruTab2");
+          tab2.getStyle().setBgTransparency(50);
 
         walkthruTabs.addTab("", tab2);
        
@@ -133,8 +176,8 @@ public class WalkthruForm extends Form {
             }
         });
         
-        Button skip = new Button("SKIP TUTORIAL");
-        skip.setUIID("SkipButton");
+        Button skip = new Button("Accèder");
+        skip.setUIID("LoginButton");        
         skip.addActionListener(e -> new ProfileForm(res).show());
         
         Container southLayout = BoxLayout.encloseY(

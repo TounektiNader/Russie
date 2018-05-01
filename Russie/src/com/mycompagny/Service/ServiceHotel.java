@@ -26,7 +26,7 @@ public class ServiceHotel {
 
     public void ajoutTask(Hotels ta) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://localhost/validationweb/russia/web/app_dev.php/cafesjson" + ta.getNom() + "/" + ta.getDetails();
+        String Url = "http://127.0.0.1:8001/cafesjson" + ta.getNom() + "/" + ta.getDetails();
         con.setUrl(Url);
 
         System.out.println("tt");
@@ -50,7 +50,7 @@ public class ServiceHotel {
         ArrayList<Hotels> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/hotelsjson");
-        con.setUrl("http://127.0.0.1:8000/hotelsjson");
+        con.setUrl("http://127.0.0.1:8001/hotelsjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override

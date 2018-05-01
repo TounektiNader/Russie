@@ -43,10 +43,21 @@ public class InsertUser extends Form {
     
     public InsertUser(Resources res) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
-
+        
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
          Label tit = new Label("Register ", "Title");
+           
+            
+            tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, g->
+            {
+            
+            new LoginForm(res).show();
+            
+            });
+           
+      
+         
            Container titleCmp = BoxLayout.encloseY(
               
                 BorderLayout.centerAbsolute(
@@ -70,21 +81,27 @@ User u = new User();
      private void addButtonBottom(User u, int color, boolean first,Resources res) {
         Container c = new Container(BoxLayout.y());
         TextField login = new TextField(u.getUsername(), "Username", 15, TextField.EMAILADDR);
-        login.getAllStyles().setFgColor(0xF69602);
+         login.setUIID("txtFieldText");
+        login.getAllStyles().setFgColor(0x132959);
          TextField password = new TextField("", "Password", 15, TextField.PASSWORD);
-        password.getAllStyles().setFgColor(0xF69602);
+           password.setUIID("txtFieldText");
+        password.getAllStyles().setFgColor(0x132959);
         //  TextField password = new TextField("", "Password", 15, TextField.PASSWORD) ;
         TextField nom = new TextField(u.getNom(), "Nom", 15, TextField.EMAILADDR);
-        nom.getAllStyles().setFgColor(0xF69602);
+          nom.setUIID("txtFieldText");
+        nom.getAllStyles().setFgColor(0x132959);
         TextField prenom = new TextField(u.getPrenom(), "Prenom", 15, TextField.EMAILADDR);
-        prenom.getAllStyles().setFgColor(0xF69602);
+        prenom.setUIID("txtFieldText");
+        prenom.getAllStyles().setFgColor(0x132959);
         TextField mail = new TextField(u.getEmail(), "Mail", 15, TextField.EMAILADDR);
-        mail.getAllStyles().setFgColor(0xF69602);
+           mail.setUIID("txtFieldText");
+        mail.getAllStyles().setFgColor(0x132959);
         TextField num = new TextField(u.getNum(), "+216XXXXXXXX", 15, TextField.PHONENUMBER);
-        num.getAllStyles().setFgColor(0xF69602);
+     num.setUIID("txtFieldText");
+        num.getAllStyles().setFgColor(0x132959);
         ComboBox natio = new ComboBox("Tunisien", "Belge", "Français", "Marocain", "Islandais");
-
-        natio.getAllStyles().setBgColor(0xFFFFFF);
+ 	natio.getStyle().setBgTransparency(0);
+        //natio.getAllStyles().setBgColor(0xFFFFFF);
         natio.setHeight(10);
         natio.setWidth(10);
         login.getAllStyles().setMargin(LEFT, 0);
@@ -145,7 +162,7 @@ User u = new User();
 String z=rs.code();
                             System.out.println(z);
  a.ajoutBet(u,z);
-             new CodeConfirmation(res).show();
+             new LoginForm(res).show();
         });
         Container by = BoxLayout.encloseY(
                 BorderLayout.center(login).add(BorderLayout.WEST, loginIcon),

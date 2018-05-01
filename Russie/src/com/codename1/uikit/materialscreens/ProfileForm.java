@@ -20,7 +20,9 @@
 package com.codename1.uikit.materialscreens;
 
 import com.codename1.components.FloatingActionButton;
+import com.codename1.components.ImageViewer;
 import com.codename1.components.MultiButton;
+import com.codename1.io.FileSystemStorage;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.EncodedImage;
@@ -29,6 +31,7 @@ import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
@@ -38,6 +41,7 @@ import com.codename1.ui.util.Resources;
 import com.company.Entites.User;
 import com.company.utils.Local;
 import com.mycompagny.Service.Authentification;
+import java.io.IOException;
 
 /**
  * Represents a user profile in the app, the first form we open after the walkthru
@@ -48,11 +52,19 @@ public class ProfileForm extends SideMenuBaseForm {
   Local dblocal = new Local();
   User u = dblocal.getUser();
     private EncodedImage jet ;
+    Image profilePic ;
     public ProfileForm(Resources res) {
         super(BoxLayout.y());
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+        
+       
+     if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
+        
+       
         Image mask = res.getImage("round-mask.png");
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
         Label profilePicLabel = new Label(profilePic, "ProfilePicTitle");

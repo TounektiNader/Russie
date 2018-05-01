@@ -39,6 +39,7 @@ import com.company.utils.Local;
 public abstract class SideMenuBaseForm extends Form {
   Local dblocal = new Local();
     User u = dblocal.getUser();
+         Image profilePic ;
     
     public SideMenuBaseForm(String title, Layout contentPaneLayout) {
         super(title, contentPaneLayout);
@@ -56,7 +57,10 @@ public abstract class SideMenuBaseForm extends Form {
     }
     
     public void setupSideMenu(Resources res) {
-        Image profilePic = res.getImage("user-picture.png");
+        if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
         Image mask = res.getImage("round-mask.png");
         mask = mask.scaledHeight(mask.getHeight() / 4 * 3);
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
@@ -68,13 +72,13 @@ public abstract class SideMenuBaseForm extends Form {
         
         
         getToolbar().addComponentToSideMenu(sidemenuTop);
-        getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Programme", FontImage.MATERIAL_TRENDING_UP,  e ->new Affichage(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Profil", FontImage.MATERIAL_ACCESS_TIME,  e -> new ProfileForm(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Mes Bets", FontImage.MATERIAL_SETTINGS,  e -> new MesBets(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD,  e -> showOtherForm(res));        
         getToolbar().addMaterialCommandToSideMenu("  Guide de supporter", FontImage.MATERIAL_HOTEL,  e ->new HomeMenu(res).getF().show());
         getToolbar().addMaterialCommandToSideMenu("  Settings Profil ", FontImage.MATERIAL_EXIT_TO_APP,  e -> new CameraUser(res).show());
-        getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Matchs", FontImage.MATERIAL_TRENDING_UP,  e ->new Affichage(res).show());    
+        getToolbar().addMaterialCommandToSideMenu("  Mes Bets", FontImage.MATERIAL_ATTACH_MONEY,  e -> new MesBets(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Profil", FontImage.MATERIAL_PERSON_OUTLINE,  e -> new ProfileForm(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Déconnexion", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
     }
     
     protected abstract void showOtherForm(Resources res);

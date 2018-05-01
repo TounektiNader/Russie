@@ -54,6 +54,7 @@ public class RestosList extends SideMenuBaseForm
     TextField tfd;
     TextField tfNom;
     String prenom;
+     Image profilePic ;
     public RestosList(Resources res)  
     {
         created = Database.exists("Russia");
@@ -78,7 +79,12 @@ public class RestosList extends SideMenuBaseForm
         
         Toolbar tb = f.getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+        
+          if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
+        
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);

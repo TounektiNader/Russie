@@ -7,6 +7,7 @@ package com.codename1.uikit.materialscreens;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.EncodedImage;
@@ -24,6 +25,7 @@ import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.TextModeLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.table.TableLayout;
 import com.codename1.ui.util.Resources;
 import com.company.Entites.Resultat;
@@ -52,19 +54,24 @@ public class MesBets extends SideMenuBaseForm {
     private Image imgAway;
     private EncodedImage enc;
     public static Resultat resultat = new Resultat();
-
+ Image profilePic ;
     public MesBets(Resources res) {
         super(BoxLayout.y());
 
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");
+        
+         if(WalkthruForm.capturedImage==null){
+           profilePic =  res.getImage("user.png");     }
+     
+     else{  profilePic = WalkthruForm.capturedImage;}
+        
 
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
-        Label tit = new Label("Resultat Matchs ", "Title");
+        Label tit = new Label("Mes Bets ", "Title");
         // tit.getAllStyles().setFgColor(0xE12336);
         Container titleCmp = BoxLayout.encloseY(
                 FlowLayout.encloseIn(menuButton),
@@ -119,13 +126,29 @@ public class MesBets extends SideMenuBaseForm {
 
         ArrayList<Bet> lis = betService.getList2(u.getId());
       
+        if(lis.isEmpty()){
+        
+            
+             ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous n'avez pas encore des bets ");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
+                            
+                          
+        
+        }
+        
+        else{
         for (Bet bet : lis) {
 
    addButtonBottom(profilePic, bet.getPartie().getHome(),bet.getPartie().getAway(), 0xd997f1, true,res,bet);
 
 
         }
-
+        }
         setupSideMenu(res);
 
         //FontImage.setMaterialIcon(loginIcon, FontImage.MATERIAL_PERSON_OUTLINE, 5);
@@ -173,10 +196,15 @@ contAway.add(awayLabel);
          Image image1 = res.getImage("1.PNG");
          Image image2 = res.getImage("2.png");
          Image imagen = res.getImage("n.PNG");
+         Image imageattent = res.getImage("attente.png");
          
    int idEquipeGagne=sr.getEquipe(bet.getPartie().getIdMatch());
          
-         
+            if(bet.getEtat().equals("Traite")){
+         labeRes1.setIcon(imageattent.fill( 55,20));
+             
+         }
+         else{
           if(idEquipeGagne==home.getIDEquipe()){ 
         
   
@@ -196,6 +224,7 @@ else
         labeRes1.setIcon(imagen.fill( 55,20));
         
     }
+            }
          
         contResultat.add(resPlace);
          contResultat.add(labeRes1);
@@ -207,6 +236,7 @@ else
 
           Label labeChoix1 = new Label("");
          labeChoix1.getAllStyles().setFgColor(0xF69602);
+      
     if(bet.getValeurr()==home.getIDEquipe()){ 
         
   
@@ -226,6 +256,7 @@ else
         labeChoix1.setIcon(imagen.fill( 55,20));
         
     }
+         
 contChoix.add(choixPlace);
 contChoix.add(labeChoix1);
         

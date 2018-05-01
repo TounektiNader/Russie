@@ -137,5 +137,17 @@ public class Local {
                        System.out.println("NOK");
                 }
     }
+    
+    public void updatecode(String  code, int id)
+    {
+        
+    try {
+           db = Database.openOrCreate("Russia");
+           db.execute("update user SET jeton='"+code+"' where id='"+id+"'" );
+
+    } catch (IOException ex) {
+                       System.out.println("NOK");
+                }
+    }
 
 }
