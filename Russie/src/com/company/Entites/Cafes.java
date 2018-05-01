@@ -16,10 +16,11 @@ public class Cafes
         this.Photo = Photo;
         this.CafeVille = CafeVille;
     }
+    
 
     public Cafes() 
     {
-        
+        CafeVille = new Villes();
     }
 
     public int getId() {

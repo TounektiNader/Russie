@@ -66,11 +66,14 @@ public class ServiceHotel {
                     for (Map<String, Object> obj : list) {
                         Hotels task = new Hotels();   
                         float id = Float.parseFloat(obj.get("idhotel").toString());
+                        Map<String, Object> etab = (Map<String, Object>) obj.get("idville");
                         task.setId((int) id);
                         task.setNom(obj.get("nomhotel").toString());
                         task.setDetails(obj.get("detailshotel").toString());
                         task.setPosition(obj.get("positionhotel").toString());
                         task.setPhoto(obj.get("photohotel").toString());
+                        task.getHotelVille().setNom(etab.get("nomville").toString());
+                        System.out.println(etab.get("nomville").toString());
 //                        Villes v = new Villes();
 //                        float id = Float.parseFloat(obj.get("idville").toString());
 //                        v.setIdville((int)id);

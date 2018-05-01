@@ -66,6 +66,7 @@ public class ServiceStade {
                     {
                         Stades task = new Stades();   
                         float id = Float.parseFloat(obj.get("idstade").toString());
+                        Map<String, Object> etab = (Map<String, Object>) obj.get("idville");
                         task.setId((int) id);
                         task.setNom(obj.get("nomstade").toString());
                         task.setCapacite(obj.get("capacitestade").toString());
@@ -73,6 +74,8 @@ public class ServiceStade {
                         task.setFondation(obj.get("fondationstade").toString());
                         task.setPosition(obj.get("positionstade").toString());
                         task.setPhoto(obj.get("photostade").toString());
+                        task.getStadeVille().setNom(etab.get("nomville").toString());
+                        System.out.println(etab.get("nomville").toString());
                         listTasks.add(task);
 
                     }

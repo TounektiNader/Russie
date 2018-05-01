@@ -171,6 +171,7 @@ public class CafesList extends SideMenuBaseForm
             URLImage imgsv = URLImage.createToStorage(enc, url2+pr.getPhoto(), url+pr.getPhoto());
                 ImageViewer imgvb = new ImageViewer(imgsv);
                 Label name = new Label(pr.getNom());
+//                Label ville = new Label(pr.getCafeVille().getNom());
                 SpanLabel details = new SpanLabel(pr.getDetails());
                 //Label ville = new Label(t.getCafeVille().getNom());
                  Button addcmt = new Button("Commenter");
@@ -222,6 +223,7 @@ public class CafesList extends SideMenuBaseForm
             }
         });
                 f2.add(details);
+//                f2.add(ville);
                 f2.add(imgvb);
                 f2.add(addcmt);                
                 
@@ -416,6 +418,7 @@ public class CafesList extends SideMenuBaseForm
                         Label label = new Label();
                         label.getStyle().setBorder(Border.createLineBorder(1, 1));
                         Label no = new Label(pr.getNom());
+                        Label ville = new Label(pr.getCafeVille().getNom());
                         System.out.println(pr.getPhoto());
                         int deviceWidth = Display.getInstance().getDisplayWidth() / 4;
                                 Image placeholder = Image.createImage(deviceWidth, deviceWidth); //square image set to 10% of screen width
@@ -429,6 +432,7 @@ public class CafesList extends SideMenuBaseForm
                         c.add(cnt);
                         Container cnt1 = new Container(new BoxLayout(BoxLayout.X_AXIS));
                         cnt.add(no);
+                        cnt.add(ville);
                         cnt1.add(btn3);
                         cnt1.add(btmap);
                         Container cc = new Container(new BoxLayout(BoxLayout.Y_AXIS));
