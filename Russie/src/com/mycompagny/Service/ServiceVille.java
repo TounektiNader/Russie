@@ -25,7 +25,7 @@ public class ServiceVille {
 
     public void ajoutTask(Villes ta) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://localhost/validationweb/russia/web/app_dev.php/cafesjson" + ta.getNom() + "/" + ta.getLogoequipe();
+        String Url = "http://127.0.0.1:8001" + ta.getNom() + "/" + ta.getLogoequipe();
         con.setUrl(Url);
 
         System.out.println("tt");
@@ -49,7 +49,7 @@ public class ServiceVille {
         ArrayList<Villes> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-        con.setUrl("http://127.0.0.1:8000/villesjson");
+        con.setUrl("http://127.0.0.1:8001/villesjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override
