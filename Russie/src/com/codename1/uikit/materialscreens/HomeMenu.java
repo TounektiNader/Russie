@@ -141,7 +141,12 @@ public class HomeMenu extends SideMenuBaseForm
                 a.getF().show();
                 f2 = a.getF();
                 Toolbar tb = f2.getToolbar();
+            tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_HOME, r->
+            {
             
+            getF().showBack();
+            
+            });
             }
             }    
         });
@@ -157,7 +162,12 @@ public class HomeMenu extends SideMenuBaseForm
                 a.getF().show();
                 f3 = a.getF();
                 Toolbar tb = f3.getToolbar();
-
+                tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_HOME, r->
+            {
+            
+            getF().showBack();
+            
+            });
             }
             }
         });
@@ -173,7 +183,12 @@ public class HomeMenu extends SideMenuBaseForm
                 a.getF().show();
                 f4 = a.getF();
                 Toolbar tb = f4.getToolbar();
+            tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_HOME, r->
+            {
             
+            getF().showBack();
+            
+            });
             }
             }
         });
@@ -189,7 +204,12 @@ public class HomeMenu extends SideMenuBaseForm
                 a.getF().show();
                 f5 = a.getF();
                 Toolbar tb = f5.getToolbar();
+            tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_HOME, r->
+            {
             
+            getF().showBack();
+            
+            });
             }
             }
         });
@@ -205,7 +225,12 @@ public class HomeMenu extends SideMenuBaseForm
                 a.getF().show();
                 f6 = a.getF();
                 Toolbar tb = f6.getToolbar();
+            tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_HOME, r->
+            {
             
+            getF().showBack();
+            
+            });
             }
             }    
         });
