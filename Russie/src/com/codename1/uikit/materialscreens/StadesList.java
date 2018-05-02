@@ -299,7 +299,7 @@ public class StadesList extends SideMenuBaseForm
                             
                             if (diffDays > 0) 
                             {
-                                dateString = "Il y'a "+diffDays+" jour(s)"; 
+                                dateString = "Il y'a "+diffDays+" jours"; 
                             }             
                             
                             if (diffDays == 1) 
