@@ -27,7 +27,7 @@ import java.util.Map;
 public class BetService {
       public void ajoutBet(Bet bet) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://127.0.0.1:8001/addbet/" + bet.getValeurr() + "/" + bet.getUser().getId()+"/"+bet.getPartie().getIdMatch();
+        String Url = "http://127.0.0.1:8000/addbet/" + bet.getValeurr() + "/" + bet.getUser().getId()+"/"+bet.getPartie().getIdMatch();
         con.setUrl(Url);
 
         System.out.println("tt");
@@ -50,7 +50,7 @@ public class BetService {
     public ArrayList<Bet> getList2(int id) {
         ArrayList<Bet> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/mesBets/"+ id);
+        con.setUrl("http://127.0.0.1:8000/mesBets/"+ id);
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

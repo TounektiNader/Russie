@@ -267,10 +267,10 @@ public class CafesList extends SideMenuBaseForm
 			System.out.print(diffHours + " hours, ");
 			System.out.print(diffMinutes + " minutes, ");
 			System.out.print(diffSeconds + " seconds.");
-                        String dateString = "Il y'a: "+diffDays+" jour(s) "+diffHours+" heure(s) "+diffMinutes+" minute(s)"; 
+                        String dateString = "Il y'a "+diffDays+" jours, "+diffHours+" heures, "+diffMinutes+" minutes"; 
                             if (diffDays == 0 && diffMinutes > 0) 
                             {
-                                dateString = "Il y'a: "+diffHours+" heures"; 
+                                dateString = "Il y'a "+diffHours+" heures"; 
                             }
                             
                             if (diffDays == 0 && diffHours == 1) 
@@ -290,12 +290,12 @@ public class CafesList extends SideMenuBaseForm
  
                             if (diffDays == 0 && diffHours == 0 && diffMinutes > 1) 
                             {
-                                dateString = "Il y'a: "+diffMinutes+" minutes"; 
+                                dateString = "Il y'a "+diffMinutes+" minutes"; 
                             }
                             
                             if (diffDays > 0) 
                             {
-                                dateString = "Il y'a: "+diffDays+" jour(s)"; 
+                                dateString = "Il y'a "+diffDays+" jour(s)"; 
                             }             
                             
                             if (diffDays == 1) 
