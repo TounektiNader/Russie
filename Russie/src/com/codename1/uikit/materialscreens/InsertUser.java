@@ -211,7 +211,18 @@ by.getStyle().setBgTransparency(50);
         by.setScrollVisible(false);
 
     }
-
+     
+     public boolean isNumber(String num){
+     boolean test=false ; 
+     
+     
+     
+     return test ; 
+     
+     }
+     
+     
+     
     
     
 }
