@@ -93,14 +93,12 @@ public class ServiceResto {
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
         con.setUrl("http://127.0.0.1:8001/restocount");
-<<<<<<< HEAD
 
      //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
         con.setUrl("http://127.0.0.1:8000/restocount");
-=======
+
      //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
 //        con.setUrl("http://127.0.0.1:8000/restocount");
->>>>>>> d573a2c96a1f645188bd5878e8f96e217f24a0b1
 
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
