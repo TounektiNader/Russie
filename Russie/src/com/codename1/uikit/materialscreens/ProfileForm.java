@@ -97,7 +97,7 @@ public class ProfileForm extends SideMenuBaseForm {
                         BorderLayout.centerAbsolute(
                                 BoxLayout.encloseY(
                                     new Label(u.getUsername(), "Title"),
-                                    new Label(u.getNom(), "SubTitle")
+                                    new Label(u.getEmail(), "SubTitle")
                                 )
                             ).add(BorderLayout.WEST, profilePicLabel),
                         GridLayout.encloseIn(2, remainingTasks, completedTasks)
@@ -118,13 +118,13 @@ public class ProfileForm extends SideMenuBaseForm {
         addButtonBottom(arrowDown, "Nom: " +u.getNom(), 0x5ae29d, false);
         addButtonBottom(arrowDown, "Prenom: " +u.getPrenom(), 0x4dc2ff, false);
         addButtonBottom(arrowDown, "Nationalite: "+u.getNationalite(), 0xffc06f, false);
-        addButtonBottom(arrowDown, "Email :"+u.getEmail(), 0xffc06f, false);
+        addButtonBottom(arrowDown, "Numéro :"+u.getNum(), 0xFFE7D5, false);
         setupSideMenu(res);
     }
     
     private void addButtonBottom(Image arrowDown, String text, int color, boolean first) {
         MultiButton finishLandingPage = new MultiButton(text);
-        finishLandingPage.setEmblem(arrowDown);
+       // finishLandingPage.setEmblem(arrowDown);
         finishLandingPage.setUIID("Container");
         finishLandingPage.setUIIDLine1("TodayEntry");
         finishLandingPage.setIcon(createCircleLine(color, finishLandingPage.getPreferredH(),  first));

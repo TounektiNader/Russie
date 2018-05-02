@@ -5,6 +5,7 @@
  */
 package com.codename1.uikit.materialscreens;
 
+import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
@@ -26,6 +27,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import static com.codename1.uikit.materialscreens.UpdateUser.reponse;
 import com.company.Entites.User;
@@ -35,12 +37,15 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
+
 /**
  *
  * @author Nader
  */
 public class InsertUser extends Form {
-    
+   
+
+
     public InsertUser(Resources res) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
         
@@ -147,6 +152,12 @@ User u = new User();
             /**
              * ************** page detail ************
              */
+         
+            if((mail.getText().trim().length() > 0)&&(login.getText().trim().length() > 0)&&(nom.getText().trim().length() > 0)
+                    &&(prenom.getText().trim().length() > 0)&&(num.getText().trim().length() > 0)&&(password.getText().trim().length() > 0)){
+                
+            
+                
             u.setEmail(mail.getText());
             u.setEmail_canonical(mail.getText());
             u.setUsername(login.getText());
@@ -162,7 +173,17 @@ User u = new User();
 String z=rs.code();
                             System.out.println(z);
  a.ajoutBet(u,z);
-             new LoginForm(res).show();
+             new LoginForm(res).show();}
+            
+            else{
+             ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez Remplir tous les champs");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
+            }
         });
         Container by = BoxLayout.encloseY(
                 BorderLayout.center(login).add(BorderLayout.WEST, loginIcon),

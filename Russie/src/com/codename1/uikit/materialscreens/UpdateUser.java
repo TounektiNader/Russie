@@ -6,10 +6,8 @@
 package com.codename1.uikit.materialscreens;
 
 import com.codename1.components.FloatingActionButton;
-import com.codename1.components.MultiButton;
-import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
-import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
@@ -26,7 +24,6 @@ import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
-import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -34,16 +31,12 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
-import com.company.Entites.Equipe;
 import com.company.Entites.User;
 import com.company.utils.Local;
-import com.mycompagny.Service.Authentification;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.Map;
 
 /**
  *
@@ -68,12 +61,7 @@ public class UpdateUser extends SideMenuBaseForm {
      
      else{  profilePic = WalkthruForm.capturedImage;}
          
-          tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, g->
-            {
-            
-            new ProfileForm(res).show();
-            
-            });
+        
         
         Image mask = res.getImage("round-mask.png");
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
@@ -188,6 +176,8 @@ public class UpdateUser extends SideMenuBaseForm {
             /**
              * ************** page detail ************
              */
+             if((mail.getText().trim().length() > 0)&&(login.getText().trim().length() > 0)&&(nom.getText().trim().length() > 0)
+                    &&(prenom.getText().trim().length() > 0)&&(num.getText().trim().length() > 0)){
             u.setEmail(mail.getText());
             u.setEmail_canonical(mail.getText());
             u.setUsername(login.getText());
@@ -238,7 +228,14 @@ request.addArgument("nationalite", u.getNationalite());
             } catch (IOException ex) {
 
             }
-
+             }
+             else{ ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez Remplir tous les champs");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();}
         });
         Container by = BoxLayout.encloseY(
                 BorderLayout.center(login).add(BorderLayout.WEST, loginIcon),

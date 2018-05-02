@@ -48,7 +48,7 @@ import com.codename1.ui.util.Resources;
  */
 public class StatsForm extends SideMenuBaseForm {
     private static final int[] COLORS = {0xf8e478, 0x60e6ce, 0x878aee};
-    private static final String[] LABELS = {"Design", "Coding", "Learning"};
+    private static final String[] LABELS = {"Gain", "Perte", "En cours"};
 
     public StatsForm(Resources res) {
         super(new BorderLayout());
@@ -95,21 +95,21 @@ public class StatsForm extends SideMenuBaseForm {
 
         XYSeries seriesXY = new XYSeries("AAA", 0);
         multi.addSeries(seriesXY);
-        seriesXY.add(3, 3);
-        seriesXY.add(4, 4);
-        seriesXY.add(5, 5);
-        seriesXY.add(6, 4);
-        seriesXY.add(7, 2);
-        seriesXY.add(8, 5);
+        seriesXY.add(1, 1);
+        seriesXY.add(2, 5);
+        seriesXY.add(3, 6);
+        seriesXY.add(4, 7);
+        seriesXY.add(5, 8);
+       
 
         seriesXY = new XYSeries("BBB", 0);
         multi.addSeries(seriesXY);
-        seriesXY.add(3, 7);
-        seriesXY.add(4, 6);
+        seriesXY.add(1,5);
+        seriesXY.add(2, 3);
+        seriesXY.add(3, 4);
+        seriesXY.add(4, 1);
         seriesXY.add(5, 3);
-        seriesXY.add(6, 2);
-        seriesXY.add(7, 1);
-        seriesXY.add(8, 4);
+       
 
         XYMultipleSeriesRenderer renderer = createChartMultiRenderer();
         

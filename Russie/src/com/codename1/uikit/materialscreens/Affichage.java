@@ -9,6 +9,7 @@ import com.codename1.components.FloatingActionButton;
 import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
+import com.codename1.ui.Component;
 import static com.codename1.ui.Component.BOTTOM;
 import static com.codename1.ui.Component.CENTER;
 import com.codename1.ui.Container;
@@ -19,6 +20,8 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.TextArea;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
@@ -27,6 +30,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.table.TableLayout;
 import com.codename1.ui.util.Resources;
 import com.company.Entites.Bet;
@@ -58,8 +62,14 @@ public class Affichage extends SideMenuBaseForm {
            profilePic =  res.getImage("user.png");     }
      
      else{  profilePic = WalkthruForm.capturedImage;}
-        
+     /////////////////////searchhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh   
 
+     
+     
+     
+     
+     //////////////////////////////////////////////////////////////////////
+     
         Button menuButton = new Button("");
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
@@ -234,6 +244,10 @@ int j = 0;
          grid.getUnselectedStyle().setBackgroundGradientStartColor(0xeae4e4);}  
     
            }
+           
+           
+           
+           
            setupSideMenu(res);
            
     
