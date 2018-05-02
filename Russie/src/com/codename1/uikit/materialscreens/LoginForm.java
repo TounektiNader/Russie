@@ -86,8 +86,8 @@ public class LoginForm extends Form {
         Button loginButton = new Button("Connexion");
         loginButton.setUIID("LoginButton");
         loginButton.addActionListener(e -> {
-                if(!login.getText().equals("") && !password.getText().equals("")){
-            
+               // if(!login.getText().equals("") && !password.getText().equals("")){
+             if((login.getText().trim().length() > 0) && (password.getText().trim().length() > 0)){
                 try {
                     ConnectionRequest request = new ConnectionRequest("http://localhost/mobile/russia/login.php?username="+login.getText()+"&password="+password.getText());
 

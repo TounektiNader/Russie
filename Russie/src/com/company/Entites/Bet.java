@@ -13,6 +13,11 @@ public class Bet {
     
     public Bet() {
     }
+     public Bet(int valeurr, String etat) {
+             this.valeurr = valeurr;
+        this.etat = etat;
+    }
+
 
     public Bet(int idBet, int valeurr, String etat, User user, Partie partie) {
         this.idBet = idBet;

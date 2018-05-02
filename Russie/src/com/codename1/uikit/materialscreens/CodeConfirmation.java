@@ -5,6 +5,7 @@
  */
 package com.codename1.uikit.materialscreens;
 
+import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import static com.codename1.ui.Component.LEFT;
@@ -13,6 +14,7 @@ import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextComponent;
 import com.codename1.ui.TextField;
@@ -20,6 +22,7 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.company.Entites.User;
 import com.company.utils.Local;
@@ -61,6 +64,7 @@ public class CodeConfirmation extends Form  {
      System.out.println(nom.getText());
      System.out.println(u.getCode());
  
+     if(nom.getText().trim().length() > 0){
      if(nom.getText().equals(u.getCode())){
   Dialog.show("Succès","Votre Compte a été Confirmer ","OK",null);
  Authentification a = new Authentification();
@@ -69,7 +73,17 @@ public class CodeConfirmation extends Form  {
  }
  else{
   Dialog.show("ERROR","Vérifier Votre Code ","OK",null);
- }
+ }}
+     else{
+      ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez Remplir tous les champs");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
+     
+     }
  });
           loginButton.getAllStyles().setFgColor(0xFFFFFF);
      

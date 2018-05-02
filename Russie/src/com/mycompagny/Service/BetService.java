@@ -25,6 +25,8 @@ import java.util.Map;
  * @author Nader
  */
 public class BetService {
+        private float sum;
+   
       public void ajoutBet(Bet bet) {
         ConnectionRequest con = new ConnectionRequest();
         String Url = "http://127.0.0.1:8000/addbet/" + bet.getValeurr() + "/" + bet.getUser().getId()+"/"+bet.getPartie().getIdMatch();
@@ -163,6 +165,80 @@ public class BetService {
         return listTasks;
     }
     
+    
+      public int getbetgain(int id){  
+     ConnectionRequest con = new ConnectionRequest();
+        con.setUrl("http://127.0.0.1:8001/statBetssGain/"+ id);  
+        
+                con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    
+                JSONParser j = new JSONParser();
+                String json = new String(con.getResponseData());
+         
+                Map<String, Object> prod = j.parseJSON(new CharArrayReader(json.toCharArray()));
+                sum = Float.parseFloat(prod.get("nb").toString());
+                } catch (Exception e) {
+                }
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+          
+        return (int)sum;
+      }
+    
+    
+      public int getbetPerte(int id){  
+     ConnectionRequest con = new ConnectionRequest();
+        con.setUrl("http://127.0.0.1:8001/statBetssPerte/"+ id);  
+        
+                con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    
+                JSONParser j = new JSONParser();
+                String json = new String(con.getResponseData());
+         
+                Map<String, Object> prod = j.parseJSON(new CharArrayReader(json.toCharArray()));
+                sum = Float.parseFloat(prod.get("nb").toString());
+                } catch (Exception e) {
+                }
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+          
+        return (int)sum;
+      }
+    
+    
+         public int getbetCours(int id){  
+     ConnectionRequest con = new ConnectionRequest();
+        con.setUrl("http://127.0.0.1:8001/statBetssCours/"+ id);  
+        
+                con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    
+                JSONParser j = new JSONParser();
+                String json = new String(con.getResponseData());
+         
+                Map<String, Object> prod = j.parseJSON(new CharArrayReader(json.toCharArray()));
+                sum = Float.parseFloat(prod.get("nb").toString());
+                } catch (Exception e) {
+                }
+                
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+          
+        return (int)sum;
+      }
     
     
       
