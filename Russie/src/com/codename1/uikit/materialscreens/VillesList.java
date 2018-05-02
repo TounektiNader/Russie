@@ -181,15 +181,19 @@ public class VillesList extends SideMenuBaseForm
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+                addcmt.setEnabled(false);
                 System.out.println("Button commenter clicked!");
                 System.out.println("Path of database: "+Database.getDatabasePath("Russia"));
                 tfNom = new TextField("", "Votre commentaire");
                 Button btnOk = new Button("Ajouter");
                 btnOk.setIcon(FontImage.createMaterial(FontImage.MATERIAL_ADD_CIRCLE, btnOk.getUnselectedStyle()));
+                Button reset = new Button("Annuler");
+                reset.setIcon(FontImage.createMaterial(FontImage.MATERIAL_CANCEL, reset.getUnselectedStyle()));
                 Label comm = new Label("Votre commentaire");
                 f2.add(comm);
                 f2.add(tfNom);
                 f2.add(btnOk);
+                f2.add(reset);
                 System.out.println("Insertion open");
                 btnOk.addActionListener(new ActionListener() {
                     
@@ -219,6 +223,19 @@ public class VillesList extends SideMenuBaseForm
                         {
                             Dialog.show("Commenter", "Echec de l'ajout de votre commentaire.", "OK", null);
                         }
+                    }
+                });
+                
+                reset.addActionListener(new ActionListener() {
+                    
+                    @Override
+                    public void actionPerformed(ActionEvent evt) 
+                    {
+                          f2.removeComponent(comm);
+                          f2.removeComponent(tfNom);
+                          f2.removeComponent(btnOk);
+                          f2.removeComponent(reset);
+                          addcmt.setEnabled(true); 
                     }
                 });
             }
@@ -339,15 +356,20 @@ public class VillesList extends SideMenuBaseForm
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+                modif.setEnabled(false);
+                supp.setEnabled(false);
                 System.out.println("Button modifier clicked!");
                 System.out.println("Path of database: "+Database.getDatabasePath("Russia"));
                 tfNom = new TextField("", prenom);
                 Button btnOk = new Button("Modifier");
                 btnOk.setIcon(FontImage.createMaterial(FontImage.MATERIAL_EDIT, btnOk.getUnselectedStyle()));
+                Button reset = new Button("Annuler");
+                reset.setIcon(FontImage.createMaterial(FontImage.MATERIAL_CANCEL, reset.getUnselectedStyle()));
                 Label comm = new Label("Votre nouveau commentaire");
                 f2.add(comm);
                 f2.add(tfNom);
                 f2.add(btnOk);
+                f2.add(reset);
                 System.out.println("Update open");
                 btnOk.addActionListener(new ActionListener() {
                     
@@ -375,6 +397,20 @@ public class VillesList extends SideMenuBaseForm
                         {
                             Dialog.show("Commenter", "Echec de la modification de votre commentaire.", "OK", null);
                         }
+                    }
+                });
+                
+                reset.addActionListener(new ActionListener() {
+                    
+                    @Override
+                    public void actionPerformed(ActionEvent evt) 
+                    {
+                          f2.removeComponent(comm);
+                          f2.removeComponent(tfNom);
+                          f2.removeComponent(btnOk);
+                          f2.removeComponent(reset);
+                          modif.setEnabled(true);
+                          supp.setEnabled(true);
                     }
                 });
             }
@@ -466,7 +502,7 @@ public class VillesList extends SideMenuBaseForm
     {
         String errorMessage = "";
 
-        if (tfNom.getText() == null || tfNom.getText().length() == 0) 
+        if (tfNom.getText().trim().length() == 0)
         {
             errorMessage += "Champ commentaire invalide !\n"; 
         }
