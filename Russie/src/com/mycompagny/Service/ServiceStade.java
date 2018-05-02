@@ -91,8 +91,13 @@ public class ServiceStade {
     public ArrayList<String> count() {
         ArrayList<String> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
+<<<<<<< HEAD
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+        con.setUrl("http://127.0.0.1:8001/stadecount");
+=======
  //       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
         con.setUrl("http://127.0.0.1:8000/stadecount");
+>>>>>>> f8d61eb3fe07694ced7b4f3ea0cdc6c3dac3d238
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override

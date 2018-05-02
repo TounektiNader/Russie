@@ -42,8 +42,9 @@ public class CameraUser extends Form {
     BetService bt = new BetService();
        Local dblocal = new Local();
     User u = dblocal.getUser();
-    List<Bet> listBet = new ArrayList<Bet>();
-     public CameraUser(Resources res) {
+    ArrayList<Bet> listBet = new ArrayList<Bet>();
+
+    public CameraUser(Resources res) {
      super(new LayeredLayout());
        Toolbar.setGlobalToolbar(true);
        
@@ -92,7 +93,7 @@ public class CameraUser extends Form {
          listBet.add(betPerte);
          listBet.add(betCours);
           
-         add(createPieChartForm());
+         createPieChartForm();
        }
      
       private DefaultRenderer buildCategoryRenderer(int[] colors) {
@@ -100,7 +101,7 @@ public class CameraUser extends Form {
         renderer.setLabelsTextSize(15);
         renderer.setLabelsColor(ColorUtil.BLACK);
         renderer.setLegendTextSize(15);
-        renderer.setMargins(new int[]{20, 30, 15, 0});
+        renderer.setMargins(new int[]{20, 30, 15, 20});
         for (int color : colors) {
             SimpleSeriesRenderer r = new SimpleSeriesRenderer();
             r.setColor(color);
@@ -135,7 +136,7 @@ public class CameraUser extends Form {
         return series;
     }
 
-    public Form createPieChartForm() {
+    public void createPieChartForm() {
 
         // Generate the values
        
@@ -143,7 +144,7 @@ public class CameraUser extends Form {
     
         total=bt.getList2(u.getId());
         // Set up the renderer
-        int[] colors = new int[]{ColorUtil.BLUE, ColorUtil.GREEN, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.CYAN};
+        int[] colors = new int[]{ColorUtil.BLUE, ColorUtil.GREEN, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.LTGRAY};
         DefaultRenderer renderersrer = buildCategoryRenderer(colors);
         renderersrer.setZoomButtonsVisible(true);
         renderersrer.setZoomEnabled(true);
@@ -158,16 +159,15 @@ public class CameraUser extends Form {
         r.setHighlighted(true);
 
         // Create the chart ... pass the values and renderer to the chart object.
-        PieChart chart = new PieChart(buildCategoryDataset("Project budget",total), renderersrer);
+        PieChart chart = new PieChart(buildCategoryDataset("Project budget",listBet), renderersrer);
 
         // Wrap the chart in a Component so we can add it to a form
         ChartComponent c = new ChartComponent(chart);
 
         // Create a form and show it.
-        Form f = new Form("Budget");
-        f.setLayout(new BorderLayout());
-        f.addComponent(BorderLayout.CENTER, c);
-        return f;
+    
+        addComponent(BorderLayout.CENTER, c);
+        
     }
      
      

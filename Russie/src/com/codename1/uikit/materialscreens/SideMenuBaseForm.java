@@ -65,9 +65,13 @@ public abstract class SideMenuBaseForm extends Form {
         mask = mask.scaledHeight(mask.getHeight() / 4 * 3);
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
         Label profilePicLabel = new Label(u.getUsername(), profilePic, "SideMenuTitle");
+          profilePicLabel.setUIID("txtFieldText");
+        profilePicLabel.getAllStyles().setFgColor(0x132959);
         profilePicLabel.setMask(mask.createMask());
 
         Container sidemenuTop = BorderLayout.center(profilePicLabel);
+         profilePicLabel.getStyle().setBgTransparency(100);
+         
         sidemenuTop.setUIID("SidemenuTop");
         
         
