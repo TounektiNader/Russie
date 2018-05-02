@@ -41,6 +41,7 @@ import com.codename1.ui.util.Resources;
 import com.company.Entites.User;
 import com.company.utils.Local;
 import com.mycompagny.Service.Authentification;
+import com.mycompagny.Service.RecompenseService;
 import java.io.IOException;
 
 /**
@@ -85,8 +86,9 @@ public class ProfileForm extends SideMenuBaseForm {
                         new Label("Jetons", "CenterSubTitle")
                 );
             remainingTasks.setUIID("RemainingTasks");
+            RecompenseService rec= new RecompenseService();
         Container completedTasks = BoxLayout.encloseY(
-                        new Label("32", "CenterTitle"),
+                        new Label(""+rec.getNombre(u.getId()), "CenterTitle"),
                         new Label("Recomponses", "CenterSubTitle")
         );
         completedTasks.setUIID("CompletedTasks");
