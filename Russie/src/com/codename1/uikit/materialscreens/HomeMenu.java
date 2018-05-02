@@ -26,6 +26,11 @@ import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import com.mycompagny.Service.ServiceCafe;
+import com.mycompagny.Service.ServiceHotel;
+import com.mycompagny.Service.ServiceResto;
+import com.mycompagny.Service.ServiceStade;
+import com.mycompagny.Service.ServiceVille;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -98,7 +103,16 @@ public class HomeMenu extends SideMenuBaseForm
         getUnselectedStyle().setBackgroundGradientEndColor(0xFFFFFF);
         getUnselectedStyle().setBackgroundGradientStartColor(0xFFFFFF);
         setupSideMenu(res);
-        
+        ServiceVille sv = new ServiceVille();
+        ArrayList<String> p = sv.count();
+        ServiceStade ss = new ServiceStade();
+        ArrayList<String> p1 = ss.count();
+        ServiceResto sr = new ServiceResto();
+        ArrayList<String> p2 = sr.count();
+        ServiceHotel sh = new ServiceHotel();
+        ArrayList<String> p3 = sh.count();
+        ServiceCafe sc = new ServiceCafe();
+        ArrayList<String> p4 = sc.count();
         int mm = Display.getInstance().convertToPixels(3);
   EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 4, mm * 4, 0), false);
   Image icon1 = URLImage.createToStorage(placeholder, "adez", "http://localhost/img/coffee.png");
@@ -106,13 +120,12 @@ public class HomeMenu extends SideMenuBaseForm
   Image icon3 = URLImage.createToStorage(placeholder, "rdedet", "http://localhost/img/resto.png");
   Image icon4 = URLImage.createToStorage(placeholder, "tdey", "http://localhost/img/soccer.png");
   Image icon5 = URLImage.createToStorage(placeholder, "ydeu", "http://localhost/img/congress.png");
-  
   ArrayList<Map<String, Object>> data = new ArrayList<>();
-  data.add(createListEntry("Stades", "", icon4));
-  data.add(createListEntry("Villes", "", icon5));
-  data.add(createListEntry("Cafés", "", icon1));
-  data.add(createListEntry("Hôtels", "", icon2));
-  data.add(createListEntry("Restaurants", "", icon3));
+  data.add(createListEntry("Stades", p1.get(0), icon4));
+  data.add(createListEntry("Villes", p.get(0), icon5));
+  data.add(createListEntry("Cafés", p4.get(0), icon1));
+  data.add(createListEntry("Hôtels", p3.get(0), icon2));
+  data.add(createListEntry("Restaurants", p2.get(0), icon3));
   
   
   DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);

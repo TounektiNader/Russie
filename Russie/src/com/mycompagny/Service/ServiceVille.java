@@ -25,7 +25,7 @@ public class ServiceVille {
 
     public void ajoutTask(Villes ta) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://127.0.0.1:8001" + ta.getNom() + "/" + ta.getLogoequipe();
+        String Url = "http://127.0.0.1:8000" + ta.getNom() + "/" + ta.getLogoequipe();
         con.setUrl(Url);
 
         System.out.println("tt");
@@ -49,7 +49,7 @@ public class ServiceVille {
         ArrayList<Villes> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-        con.setUrl("http://127.0.0.1:8001/villesjson");
+        con.setUrl("http://127.0.0.1:8000/villesjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override
@@ -76,6 +76,37 @@ public class ServiceVille {
                         task.setCoordonnees(obj.get("coordonnees").toString());
                         listTasks.add(task);
 
+                    }
+                } catch (IOException ex) {
+                }
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+        return listTasks;
+    }
+    
+    public ArrayList<String> count() {
+        ArrayList<String> listTasks = new ArrayList<>();
+        ConnectionRequest con = new ConnectionRequest();
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+        con.setUrl("http://127.0.0.1:8000/villecount");
+        con.addResponseListener(new ActionListener<NetworkEvent>() 
+        {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                //listTasks = getListTask(new String(con.getResponseData()));
+                JSONParser jsonp = new JSONParser();
+                
+                try {
+                    Map<String, Object> tasks = jsonp.parseJSON(new CharArrayReader(new String(con.getResponseData()).toCharArray()));
+                    System.out.println(tasks);
+                    //System.out.println(tasks);
+                    List<Map<String, String>> list = (List<Map<String, String>>) tasks.get("root");
+                    for (Map<String, String> obj : list) 
+                    {
+                        Object i = obj.get("1");
+                    listTasks.add((String) i);
                     }
                 } catch (IOException ex) {
                 }

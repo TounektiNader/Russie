@@ -88,5 +88,36 @@ public class ServiceCafe {
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }
+    
+    public ArrayList<String> count() {
+        ArrayList<String> listTasks = new ArrayList<>();
+        ConnectionRequest con = new ConnectionRequest();
+//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+        con.setUrl("http://127.0.0.1:8000/cafecount");
+        con.addResponseListener(new ActionListener<NetworkEvent>() 
+        {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                //listTasks = getListTask(new String(con.getResponseData()));
+                JSONParser jsonp = new JSONParser();
+                
+                try {
+                    Map<String, Object> tasks = jsonp.parseJSON(new CharArrayReader(new String(con.getResponseData()).toCharArray()));
+                    System.out.println(tasks);
+                    //System.out.println(tasks);
+                    List<Map<String, String>> list = (List<Map<String, String>>) tasks.get("root");
+                    for (Map<String, String> obj : list) 
+                    {
+                        Object i = obj.get("1");
+                    listTasks.add((String) i);
+                    }
+                } catch (IOException ex) {
+                }
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+        return listTasks;
+    }
 
 }
