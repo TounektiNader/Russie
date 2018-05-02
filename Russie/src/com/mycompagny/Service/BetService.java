@@ -168,7 +168,7 @@ public class BetService {
     
       public int getbetgain(int id){  
      ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/statBetssGain/"+ id);  
+        con.setUrl("http://127.0.0.1:8000/statBetssGain/"+ id);  
         
                 con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -193,7 +193,7 @@ public class BetService {
     
       public int getbetPerte(int id){  
      ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/statBetssPerte/"+ id);  
+        con.setUrl("http://127.0.0.1:8000/statBetssPerte/"+ id);  
         
                 con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -218,7 +218,7 @@ public class BetService {
     
          public int getbetCours(int id){  
      ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/statBetssCours/"+ id);  
+        con.setUrl("http://127.0.0.1:8000/statBetssCours/"+ id);  
         
                 con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

@@ -267,6 +267,7 @@ public class HotelsList extends SideMenuBaseForm
 			System.out.print(diffMinutes + " minutes, ");
 			System.out.print(diffSeconds + " seconds.");
                         String dateString = "Il y'a "+diffDays+" jours, "+diffHours+" heures, "+diffMinutes+" minutes"; 
+                        
                          if (diffDays == 0 && diffMinutes > 0) 
                             {
                                 dateString = "Il y'a "+diffHours+" heures"; 
