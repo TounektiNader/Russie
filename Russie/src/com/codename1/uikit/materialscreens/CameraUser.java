@@ -42,7 +42,7 @@ public class CameraUser extends Form {
     BetService bt = new BetService();
        Local dblocal = new Local();
     User u = dblocal.getUser();
-    ArrayList<Bet> listBet = new ArrayList<Bet>();
+    List<Bet> listBet = new ArrayList<Bet>();
 
     public CameraUser(Resources res) {
      super(new LayeredLayout());
@@ -159,7 +159,7 @@ public class CameraUser extends Form {
         r.setHighlighted(true);
 
         // Create the chart ... pass the values and renderer to the chart object.
-        PieChart chart = new PieChart(buildCategoryDataset("Project budget",listBet), renderersrer);
+        PieChart chart = new PieChart(buildCategoryDataset("Project budget",total), renderersrer);
 
         // Wrap the chart in a Component so we can add it to a form
         ChartComponent c = new ChartComponent(chart);

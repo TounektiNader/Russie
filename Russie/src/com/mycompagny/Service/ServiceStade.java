@@ -49,7 +49,7 @@ public class ServiceStade {
         ArrayList<Stades> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/stadesjson");
-        con.setUrl("http://127.0.0.1:8000/stadesjson");
+        con.setUrl("http://127.0.0.1:8001/stadesjson");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override
@@ -96,7 +96,11 @@ public class ServiceStade {
         con.setUrl("http://127.0.0.1:8001/stadecount");
 
  //       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+<<<<<<< HEAD
         con.setUrl("http://127.0.0.1:8000/stadecount");
+=======
+    //    con.setUrl("http://127.0.0.1:8000/stadecount");
+>>>>>>> d573a2c96a1f645188bd5878e8f96e217f24a0b1
 
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
