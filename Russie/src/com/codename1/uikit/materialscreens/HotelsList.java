@@ -337,7 +337,8 @@ public class HotelsList extends SideMenuBaseForm
                         
                         Label l = new Label(nom);
                         Label l2 = new Label(prenom);
-                        SpanLabel l3 = new SpanLabel(dateString);
+                        Label l3 = new Label(dateString);
+                        l3.getStyle().setFgColor(921717);
                         
                         contr.add(l);
                         contr.add(l2);
@@ -457,6 +458,7 @@ public class HotelsList extends SideMenuBaseForm
                         label.getStyle().setBorder(Border.createLineBorder(1, 1));
                         Label no = new Label(pr.getNom());
                         Label ville = new Label(pr.getHotelVille().getNom());
+                        ville.getStyle().setFgColor(921717);
                         System.out.println(pr.getPhoto());
                         int deviceWidth = Display.getInstance().getDisplayWidth() / 4;
                                 Image placeholder = Image.createImage(deviceWidth, deviceWidth); //square image set to 10% of screen width
