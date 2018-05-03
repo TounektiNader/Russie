@@ -65,9 +65,13 @@ public abstract class SideMenuBaseForm extends Form {
         mask = mask.scaledHeight(mask.getHeight() / 4 * 3);
         profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
         Label profilePicLabel = new Label(u.getUsername(), profilePic, "SideMenuTitle");
+          profilePicLabel.setUIID("txtFieldText");
+        profilePicLabel.getAllStyles().setFgColor(0x132959);
         profilePicLabel.setMask(mask.createMask());
 
         Container sidemenuTop = BorderLayout.center(profilePicLabel);
+         profilePicLabel.getStyle().setBgTransparency(100);
+         
         sidemenuTop.setUIID("SidemenuTop");
         
         
@@ -75,6 +79,7 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD,  e -> new StatsForm(res).show());        
         getToolbar().addMaterialCommandToSideMenu("  Guide de supporter", FontImage.MATERIAL_HOTEL,  e ->new HomeMenu(res).getF().show());
         getToolbar().addMaterialCommandToSideMenu("  Settings Profil ", FontImage.MATERIAL_EXIT_TO_APP,  e -> new CameraUser(res).show());
+         getToolbar().addMaterialCommandToSideMenu("  Cadeaux", FontImage.MATERIAL_SHOP,  e -> new CadeauForm(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Matchs", FontImage.MATERIAL_TRENDING_UP,  e ->new Affichage(res).show());    
         getToolbar().addMaterialCommandToSideMenu("  Mes Bets", FontImage.MATERIAL_ATTACH_MONEY,  e -> new MesBets(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Profil", FontImage.MATERIAL_PERSON_OUTLINE,  e -> new ProfileForm(res).show());

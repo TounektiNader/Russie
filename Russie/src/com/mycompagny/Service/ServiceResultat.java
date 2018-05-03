@@ -151,6 +151,7 @@ public class ServiceResultat {
                           date1=debut+fin+"00";
                          }
                          else if (nb==4){ date1=debut+fin+"000";}
+                         else if(nb==5){date1=debut+fin+"0000";}
                           else if(nb==6){ date1=debut+fin+"00000";}
                        
                         System.out.println("//////"+date1+"//////");
@@ -251,6 +252,27 @@ public class ServiceResultat {
         NetworkManager.getInstance().addToQueueAndWait(con);
        
        return s ;           
-   }           
+   }   
+   
+     public void envoieSMS(String num , String code) {
+        ConnectionRequest con = new ConnectionRequest();
+        String Url = "http://127.0.0.1:8000/envoieSMS/" + num + "/" + code;
+        con.setUrl(Url);
+
+        System.out.println("tt");
+
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+            System.out.println(str);
+//            if (str.trim().equalsIgnoreCase("OK")) {
+//                f2.setTitle(tlogin.getText());
+//             f2.show();
+//            }
+//            else{
+//            Dialog.show("error", "login ou pwd invalid", "ok", null);
+//            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+    }
 
 }

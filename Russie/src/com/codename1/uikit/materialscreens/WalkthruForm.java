@@ -22,6 +22,8 @@ package com.codename1.uikit.materialscreens;
 import com.codename1.capture.Capture;
 import com.codename1.components.SpanLabel;
 import com.codename1.io.Log;
+import com.codename1.media.Media;
+import com.codename1.media.MediaManager;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
@@ -36,6 +38,8 @@ import com.codename1.ui.RadioButton;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.animations.CommonTransitions;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.events.SelectionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -52,6 +56,7 @@ import com.codename1.ui.plaf.UIManager;
  * @author Shai Almog
  */
 public class WalkthruForm extends Form {
+    public Media  video;
       public static Image capturedImage;
     public WalkthruForm(Resources res) {
         super(new LayeredLayout());
@@ -67,7 +72,9 @@ public class WalkthruForm extends Form {
         walkthruTabs.getTabsContainer().setUIID("Container");
         walkthruTabs.hideTabs();
         
-  
+       Button settingsButton = new Button("");
+        settingsButton.setUIID("Title");
+        FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_PAUSE);
         
         
         
@@ -85,7 +92,7 @@ public class WalkthruForm extends Form {
          la.getAllStyles().setFgColor(0x183152);
          laa.getAllStyles().setFgColor(0x183152);
 
-        Container tab1 = BorderLayout.centerAbsolute(BoxLayout.encloseY(
+        Container tab1 =BorderLayout.centerAbsolute(BoxLayout.encloseY(
                 notesPlaceholder,
                 
                 la,
@@ -100,7 +107,7 @@ public class WalkthruForm extends Form {
           Label picture = new Label("", "Container");
         Style s = UIManager.getInstance().getComponentStyle("TitleCommand");
 Image camera = FontImage.createMaterial(FontImage.MATERIAL_CAMERA,s);
-
+    
     getToolbar().addCommandToRightBar("", camera, (ev) -> {
     try {
         int width = Display.getInstance().getDisplayWidth();
@@ -133,7 +140,39 @@ Image camera = FontImage.createMaterial(FontImage.MATERIAL_CAMERA,s);
         Log.e(err);
     }
 });
+        ///////////////////////////////////////////////////////
+
+String file = "res/russia.mp4";
+                
+                    
         
+
+
+       
+                try {
+                  video = MediaManager.createMedia(file,true);
+                   
+                    video.setVolume(150);
+                    video.play();
+                } catch(IOException err) {
+                    
+                }
+                
+                settingsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if(video.isPlaying())
+                {
+                    video.pause();
+                    FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_PLAY_ARROW);}
+                else
+                {
+                  video.play(); 
+                     FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_PAUSE);
+                 
+                }
+            }
+        });
         
         ///////////////////////////////////////////////////////
         Label bottomSpaceTab2 = new Label();
@@ -178,7 +217,7 @@ Image camera = FontImage.createMaterial(FontImage.MATERIAL_CAMERA,s);
         
         Button skip = new Button("Accèder");
         skip.setUIID("LoginButton");        
-        skip.addActionListener(e -> new ProfileForm(res).show());
+        skip.addActionListener(e -> {new ProfileForm(res).show();video.pause();});
         
         Container southLayout = BoxLayout.encloseY(
                         radioContainer,
