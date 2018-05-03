@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/21650/Documents/GitHub/Russie/Russie/src/com/mycompagny/Service/ServiceFavoris.java</file>
             <file>file:/C:/Users/21650/Documents/GitHub/Russie/Russie/src/com/mycompagny/Service/CadeauService.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> c09e02ba6d4b92be2fef4aff4c4469f6e08bbcf1
     </open-files>
 </project-private>
