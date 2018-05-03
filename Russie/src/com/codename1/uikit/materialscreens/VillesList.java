@@ -336,7 +336,8 @@ public class VillesList extends SideMenuBaseForm
                         
                         Label l = new Label(nom);
                         Label l2 = new Label(prenom);
-                        SpanLabel l3 = new SpanLabel(dateString);
+                        Label l3 = new Label(dateString);
+                        l3.getStyle().setFgColor(921717);
                         
                         contr.add(l);
                         contr.add(l2);

@@ -285,7 +285,7 @@ public class MapContainer extends Container {
             //System.out.println("About to load map text");
             String str = Util.readToString(Display.getInstance().getResourceAsStream(null, "/com_codename1_googlemaps_MapContainer.html"));
             //System.out.println("Map text: "+str);
-            str = StringUtil.replaceAll(str, "YOUR_API_KEY", htmlApiKey);
+            str = StringUtil.replaceAll(str, "AIzaSyB4XbvS0lj_TQLBjYPaooKBrZiXvW3giAU", htmlApiKey);
             //System.out.println("Finished setting API key");
             str = StringUtil.replaceAll(str, "//origin = MAPCONTAINER_ORIGIN", "origin = {lat: "+ loc.getLatitude() + ", lng: "  + loc.getLongitude() + "};");
             //System.out.println("Finished setting origin");
