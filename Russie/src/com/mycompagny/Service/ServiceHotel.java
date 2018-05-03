@@ -101,7 +101,13 @@ public class ServiceHotel {
         ConnectionRequest con = new ConnectionRequest();
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+<<<<<<< HEAD
         con.setUrl("http://127.0.0.1:8000/hotelcount");
+=======
+
+        con.setUrl("http://127.0.0.1:8000/hotelcount");
+        //con.setUrl("http://127.0.0.1:8001/hotelcount");
+>>>>>>> 822277305a3a1db7e3ba5fd5967e5e0f1d1d9c28
 
 
 
