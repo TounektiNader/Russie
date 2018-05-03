@@ -45,7 +45,6 @@ import java.util.Random;
 public class InsertUser extends Form {
    
 
-
     public InsertUser(Resources res) {
         super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));
         
@@ -101,6 +100,7 @@ User u = new User();
         TextField mail = new TextField(u.getEmail(), "Mail", 15, TextField.EMAILADDR);
            mail.setUIID("txtFieldText");
         mail.getAllStyles().setFgColor(0x132959);
+ 
         TextField num = new TextField(u.getNum(), "+216XXXXXXXX", 15, TextField.PHONENUMBER);
      num.setUIID("txtFieldText");
         num.getAllStyles().setFgColor(0x132959);
@@ -152,12 +152,14 @@ User u = new User();
             /**
              * ************** page detail ************
              */
-         
+                       try{     
             if((mail.getText().trim().length() > 0)&&(login.getText().trim().length() > 0)&&(nom.getText().trim().length() > 0)
                     &&(prenom.getText().trim().length() > 0)&&(num.getText().trim().length() > 0)&&(password.getText().trim().length() > 0)){
                 
-            
-                
+ 
+    
+   int i = Integer.parseInt(num.getText());
+               
             u.setEmail(mail.getText());
             u.setEmail_canonical(mail.getText());
             u.setUsername(login.getText());
@@ -173,7 +175,12 @@ User u = new User();
 String z=rs.code();
                             System.out.println(z);
  a.ajoutBet(u,z);
+  //rs.envoieSMS(u.getNum(), z);
              new LoginForm(res).show();}
+            
+      
+           
+           
             
             else{
              ToastBar.Status s = ToastBar.getInstance().createStatus();
@@ -184,6 +191,19 @@ String z=rs.code();
                             s.setExpires(5000);
                             s.show();
             }
+            }catch(NumberFormatException ex){
+   
+             ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez saisir un numero valide");
+                          
+                            Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(i);
+                            s.setExpires(5000);
+                            s.show();
+    
+}
+                
+
         });
         Container by = BoxLayout.encloseY(
                 BorderLayout.center(login).add(BorderLayout.WEST, loginIcon),
@@ -212,14 +232,7 @@ by.getStyle().setBgTransparency(50);
 
     }
      
-     public boolean isNumber(String num){
-     boolean test=false ; 
-     
-     
-     
-     return test ; 
-     
-     }
+    
      
      
      
