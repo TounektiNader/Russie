@@ -55,7 +55,7 @@ public class CameraUser extends Form {
         menuButton.setUIID("Title");
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
-        Label tit = new Label("Resultat Matchs ", "Title");
+        Label tit = new Label("Statistiques Mes Bets ", "Title");
         // tit.getAllStyles().setFgColor(0xE12336);
         Container titleCmp = BoxLayout.encloseY(
                 FlowLayout.encloseIn(menuButton),

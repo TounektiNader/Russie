@@ -240,7 +240,7 @@ int j = 0;
          grid.getUnselectedStyle().setBackgroundGradientStartColor(0xeae4e4);
         }
       
-           else{  grid.getUnselectedStyle().setBackgroundGradientEndColor(0xC72B10);
+           else{  grid.getUnselectedStyle().setBackgroundGradientEndColor(0xC9001A);
          grid.getUnselectedStyle().setBackgroundGradientStartColor(0xeae4e4);}  
     
            }

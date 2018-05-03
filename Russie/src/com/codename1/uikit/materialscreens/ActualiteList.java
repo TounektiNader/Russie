@@ -122,7 +122,7 @@ f.addComponent(l);
             del.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent k) {
-
+     
                     Dialog d = new Dialog();
 
                     if (Dialog.show("Confirmation", "delete this product??", "Ok", "Annuler")) {
@@ -196,10 +196,18 @@ f.addComponent(l);
                         int deviceWidth = Display.getInstance().getDisplayWidth() / 4;
                                 Image placeholder = Image.createImage(deviceWidth, deviceWidth); //square image set to 10% of screen width
                                 EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
+                               if(pr.getImage()==null){
+                               
+                                label.setIcon(URLImage.createToStorage(encImage,
+                                        "Large_" + url2 +"icon.png"+
+                                                "", url +"icon.png"+
+                                                        "", URLImage.RESIZE_SCALE_TO_FILL));
+                               }
+                               else{
                                 label.setIcon(URLImage.createToStorage(encImage,
                                         "Large_" + url2 +pr.getImage()+
                                                 "", url +pr.getImage()+
-                                                        "", URLImage.RESIZE_SCALE_TO_FILL));
+                                                        "", URLImage.RESIZE_SCALE_TO_FILL));}
                         c.add(label);
                         Container cnt = new Container(new BoxLayout(BoxLayout.Y_AXIS));
                         cnt.add(pr.getTitre());

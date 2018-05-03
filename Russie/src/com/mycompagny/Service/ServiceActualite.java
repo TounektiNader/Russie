@@ -59,7 +59,15 @@ public class ServiceActualite {
                         task.setIdactualite((int) id);
                         task.setTitre(obj.get("titre").toString());
                         task.setTexte(obj.get("texte").toString());
-                        task.setImage(obj.get("nomImage2").toString());
+                        try {
+                              task.setImage(obj.get("nomImage2").toString());
+                        } catch (NullPointerException e) {
+                       
+                            task.setImage(null);    
+                        }
+                       
+                       
+                      
                         listTasks.add(task);
 
                     }

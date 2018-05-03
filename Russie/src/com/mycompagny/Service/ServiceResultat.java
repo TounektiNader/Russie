@@ -180,6 +180,7 @@ public class ServiceResultat {
         });
          InfiniteProgress prog = new InfiniteProgress();
         Dialog dlg = prog.showInifiniteBlocking();
+          
         con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
        
