@@ -130,6 +130,7 @@ public class ServiceStade {
 
             }
         });
+        
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }

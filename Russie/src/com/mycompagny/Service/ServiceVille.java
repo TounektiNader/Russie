@@ -144,6 +144,7 @@ public class ServiceVille {
 
             }
         });
+        
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }

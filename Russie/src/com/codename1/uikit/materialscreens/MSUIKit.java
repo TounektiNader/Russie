@@ -54,7 +54,7 @@ public class MSUIKit {
             current.show();
             return;
         }
-        new LoginForm(theme).show();
+        new SplashForm(theme).show();
     }
 
     public void stop() {

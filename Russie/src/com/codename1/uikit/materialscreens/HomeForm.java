@@ -97,7 +97,7 @@ public class HomeForm extends SideMenuBaseForm{
             });
             }
         });
-        
+        f.show();
         btnajout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
