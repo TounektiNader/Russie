@@ -125,14 +125,13 @@ f.addComponent(l);
      
                     Dialog d = new Dialog();
 
-                    if (Dialog.show("Confirmation", "delete this product??", "Ok", "Annuler")) {
+                    if (Dialog.show("Confirmation", "delete this news??", "Ok", "Annuler")) {
                         ConnectionRequest req = new ConnectionRequest();
 
-                        req.setUrl("http://localhost/ValidationWeb/russia/web/app_dev.php/suppriactuj/"
+                        req.setUrl("http://127.0.0.1:8000/suppriactuj/"
                                 + pr.getIdactualite());
                         System.out.println(pr.getIdactualite());
                         NetworkManager.getInstance().addToQueue(req);
-                        
                         ActualiteList pc = new ActualiteList(res);
                         pc.getF().show();
 
