@@ -175,7 +175,7 @@ User u = new User();
 String z=rs.code();
                             System.out.println(z);
  a.ajoutBet(u,z);
-  //rs.envoieSMS(u.getNum(), z);
+  rs.envoieSMS(u.getNum(), z);
              new LoginForm(res).show();}
             
       
