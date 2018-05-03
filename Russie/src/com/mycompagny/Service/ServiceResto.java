@@ -98,18 +98,6 @@ public class ServiceResto {
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
         con.setUrl("http://127.0.0.1:8000/restocount");
-<<<<<<< HEAD
-
-=======
-
-        con.setUrl("http://127.0.0.1:8001/restocount");
-
-     //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-        con.setUrl("http://127.0.0.1:8000/restocount");
-
-
-
->>>>>>> 822277305a3a1db7e3ba5fd5967e5e0f1d1d9c28
 
 
      //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
