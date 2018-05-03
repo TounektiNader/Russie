@@ -5,11 +5,13 @@
  */
 package com.mycompagny.Service;
 
+import com.codename1.components.InfiniteProgress;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
 import com.company.Entites.Hotels;
 import com.company.Entites.Villes;
@@ -85,7 +87,11 @@ public class ServiceHotel {
                 }
 
             }
+            
         });
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }
@@ -95,8 +101,18 @@ public class ServiceHotel {
         ConnectionRequest con = new ConnectionRequest();
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+        con.setUrl("http://127.0.0.1:8000/hotelcount");
+=======
+
+        con.setUrl("http://127.0.0.1:8000/hotelcount");
+        //con.setUrl("http://127.0.0.1:8001/hotelcount");
+>>>>>>> 822277305a3a1db7e3ba5fd5967e5e0f1d1d9c28
+>>>>>>> 82a33ede1017194d51d53f14160065b90c53ac0c
 
 
 
