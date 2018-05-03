@@ -5,11 +5,13 @@
  */
 package com.mycompagny.Service;
 
+import com.codename1.components.InfiniteProgress;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
 import com.company.Entites.Hotels;
 import com.company.Entites.Villes;
@@ -85,7 +87,11 @@ public class ServiceHotel {
                 }
 
             }
+            
         });
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }
@@ -95,10 +101,7 @@ public class ServiceHotel {
         ConnectionRequest con = new ConnectionRequest();
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-<<<<<<< HEAD
         con.setUrl("http://127.0.0.1:8000/hotelcount");
-=======
-        con.setUrl("http://127.0.0.1:8001/hotelcount");
 
 
 
@@ -108,12 +111,7 @@ public class ServiceHotel {
 //       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
       //  con.setUrl("http://127.0.0.1:8000/hotelcount");
 
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> 519a3e98d9feae5d400498a8d504147c210b432f
->>>>>>> 2f6d2e44352549351a39802fbf3e92c31e365c14
 
 //       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
        // con.setUrl("http://127.0.0.1:8000/hotelcount");
