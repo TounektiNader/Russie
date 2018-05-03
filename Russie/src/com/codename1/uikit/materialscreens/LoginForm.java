@@ -45,6 +45,7 @@ import com.company.utils.Local;
 
 
 import com.mycompagny.Service.Authentification;
+import com.mycompagny.Service.PromoService;
 import com.mycompagny.Service.ServiceResultat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -123,13 +124,15 @@ public class LoginForm extends Form {
                         
                           if(u.getEnabled()==0){
                             Dialog.show("ERROR","Vous Devez Confirmer votre Compte ","OK",null);
+                 
                               new CodeConfirmation(theme).show();
                         }
                                 
                           else{ 
                         
                      Dialog.show("Succès","Bienvenue "+u.getUsername(),"OK",null);
-                
+                     PromoService promo=new PromoService();
+           promo.ajoutTask();
                         
             new WalkthruForm(theme).show();}
                        }

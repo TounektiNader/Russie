@@ -151,6 +151,7 @@ public class ServiceResultat {
                           date1=debut+fin+"00";
                          }
                          else if (nb==4){ date1=debut+fin+"000";}
+                         else if(nb==5){date1=debut+fin+"0000";}
                           else if(nb==6){ date1=debut+fin+"00000";}
                        
                         System.out.println("//////"+date1+"//////");

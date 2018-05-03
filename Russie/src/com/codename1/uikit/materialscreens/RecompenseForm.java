@@ -56,6 +56,7 @@ public class RecompenseForm extends SideMenuBaseForm {
      private Image imgHome;
      private Image imgAway;
     private EncodedImage enc ;
+    public String cp;
     
     public RecompenseForm(Resources res) {
         super(BoxLayout.y());
@@ -127,7 +128,7 @@ public class RecompenseForm extends SideMenuBaseForm {
         
         Container Date = new Container(new BoxLayout(BoxLayout.X_AXIS));
             
-               
+               cp=lis2.get(0).getCoupon();
         Label home1 = new Label("Le coupon expire "+lis2.get(0).getExpiration());
          home1.getAllStyles().setFgColor(0xF69602);
         Label away1 = new Label("Le coupon de "+lis2.get(0).getPromotion()+" % est "+lis2.get(0).getCoupon());
@@ -251,6 +252,7 @@ imgHome.fill( 30, 30);
            coupon.getAllStyles().setFgColor(0xf1b00a);
            c.add(label);
            c.add(coupon);
+           coupon.setText(cp);
            bt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
