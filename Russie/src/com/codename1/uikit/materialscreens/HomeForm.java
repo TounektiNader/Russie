@@ -60,20 +60,7 @@ public class HomeForm extends SideMenuBaseForm{
         );
 
         tb.setTitleComponent(titleCmp);
-        Label Liste = new Label("Pariez");
-
-        Label Liste0 = new Label(" ");
-        Liste.getAllStyles().setFgColor(0xE12336);
-
-        Container listCon = BoxLayout.encloseY(
-                BorderLayout.centerAbsolute(
-                        BoxLayout.encloseY(
-                                Liste
-                        )
-                ),
-                GridLayout.encloseIn(2)
-        );
-        add(listCon);
+       
 
 //add(gov);
 //gov.getAllStyles().setMargin(LEFT, 0);
