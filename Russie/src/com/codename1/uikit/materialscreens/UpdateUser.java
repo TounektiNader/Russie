@@ -176,9 +176,15 @@ public class UpdateUser extends SideMenuBaseForm {
             /**
              * ************** page detail ************
              */
-             if((mail.getText().trim().length() > 0)&&(login.getText().trim().length() > 0)&&(nom.getText().trim().length() > 0)
+             try{
+                 
+             
+            if((mail.getText().trim().length() > 0)&&(login.getText().trim().length() > 0)&&(nom.getText().trim().length() > 0)
                     &&(prenom.getText().trim().length() > 0)&&(num.getText().trim().length() > 0)){
-            u.setEmail(mail.getText());
+           
+                  int i = Integer.parseInt(num.getText());
+                
+                 u.setEmail(mail.getText());
             u.setEmail_canonical(mail.getText());
             u.setUsername(login.getText());
             u.setUsername_canonical(login.getText());
@@ -232,10 +238,21 @@ request.addArgument("nationalite", u.getNationalite());
              else{ ToastBar.Status s = ToastBar.getInstance().createStatus();
                             s.setMessage("Vous devez Remplir tous les champs");
                           
+                            Image d = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
+                            s.setIcon(d);
+                            s.setExpires(5000);
+                            s.show();}
+                 }catch(NumberFormatException ex){
+   
+             ToastBar.Status s = ToastBar.getInstance().createStatus();
+                            s.setMessage("Vous devez saisir un numero valide");
+                          
                             Image i = FontImage.createMaterial(FontImage.MATERIAL_ERROR, UIManager.getInstance().getComponentStyle("Title"));
                             s.setIcon(i);
                             s.setExpires(5000);
-                            s.show();}
+                            s.show();
+    
+}
         });
         Container by = BoxLayout.encloseY(
                 BorderLayout.center(login).add(BorderLayout.WEST, loginIcon),

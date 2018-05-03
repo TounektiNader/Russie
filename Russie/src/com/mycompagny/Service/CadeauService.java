@@ -26,7 +26,7 @@ public class CadeauService {
    public ArrayList<Cadeau> getList2() {
         ArrayList<Cadeau> listCadeau = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/all");
+        con.setUrl("http://127.0.0.1:8000/all");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -64,7 +64,7 @@ public class CadeauService {
         User x= new User();
         x=c.getUser();
         System.out.println(x.getId()+"    "+ta.getIdCadeau());
-        String Url = "http://127.0.0.1:8001/addmobile/" + ta.getIdCadeau() + "/" +x.getId() ;
+        String Url = "http://127.0.0.1:8000/addmobile/" + ta.getIdCadeau() + "/" +x.getId() ;
         con.setUrl(Url);
 
         System.out.println("tt");

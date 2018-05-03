@@ -31,7 +31,7 @@ public class PromoService {
     public void ajoutTask() {
         ConnectionRequest con = new ConnectionRequest();
        
-        String Url = "http://127.0.0.1:8001/promo";
+        String Url = "http://127.0.0.1:8000/promo";
         con.setUrl(Url);
 
         System.out.println("tt");
@@ -54,7 +54,7 @@ public class PromoService {
     public ArrayList<Promo> getList2() {
         ArrayList<Promo> listPromo = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/promo2");
+        con.setUrl("http://127.0.0.1:8000/promo2");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -126,7 +126,7 @@ public class PromoService {
         ConnectionRequest con = new ConnectionRequest();
         RecompenseService x=new RecompenseService();
        int total=x.getTotal(id);
-        String Url = "http://127.0.0.1:8001/deletepromo/"+coupon+"/"+id+"/"+total;
+        String Url = "http://127.0.0.1:8000/deletepromo/"+coupon+"/"+id+"/"+total;
         con.setUrl(Url);
         ArrayList<Promo> tt=getList2();
         Local ttt=new Local();

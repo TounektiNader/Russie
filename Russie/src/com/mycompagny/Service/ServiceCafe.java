@@ -93,7 +93,7 @@ public class ServiceCafe {
         ArrayList<String> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-        con.setUrl("http://127.0.0.1:8001/cafecount");
+        con.setUrl("http://127.0.0.1:8000/cafecount");
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override

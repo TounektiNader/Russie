@@ -26,7 +26,7 @@ public class RecompenseService {
     public ArrayList<Recompense> getList2(int id) {
         ArrayList<Recompense> listRecompense = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/mobile/" +id);
+        con.setUrl("http://127.0.0.1:8000/mobile/" +id);
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -66,7 +66,7 @@ public class RecompenseService {
      public int getTotal(int id) {
        
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/mobile/" +id);
+        con.setUrl("http://127.0.0.1:8000/mobile/" +id);
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -99,7 +99,7 @@ public class RecompenseService {
      public int getNombre(int id) {
        
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://127.0.0.1:8001/mobile/" +id);
+        con.setUrl("http://127.0.0.1:8000/mobile/" +id);
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
