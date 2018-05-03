@@ -101,6 +101,8 @@ public class ServiceResto {
 =======
         con.setUrl("http://127.0.0.1:8000/restocount");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 =======
 >>>>>>> 82a33ede1017194d51d53f14160065b90c53ac0c
@@ -116,6 +118,7 @@ public class ServiceResto {
 
 >>>>>>> 822277305a3a1db7e3ba5fd5967e5e0f1d1d9c28
 >>>>>>> 82a33ede1017194d51d53f14160065b90c53ac0c
+>>>>>>> 1467675d20a2d3972df70cd31d0c27e31052f238
 
 
      //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");

@@ -102,6 +102,8 @@ public class ServiceHotel {
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 
 =======
@@ -115,6 +117,7 @@ public class ServiceHotel {
 >>>>>>> 82a33ede1017194d51d53f14160065b90c53ac0c
 
 
+>>>>>>> 1467675d20a2d3972df70cd31d0c27e31052f238
 
 //       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
         con.setUrl("http://127.0.0.1:8000/hotelcount");
