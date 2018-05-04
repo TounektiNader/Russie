@@ -69,7 +69,7 @@ public class AffichageEquipeJoueur extends SideMenuBaseForm
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
         Label tit = new Label("Equipes", "Title");
-         tit.getAllStyles().setFgColor(0xE12336);
+         tit.getAllStyles().setFgColor(0xfc2a30);
         Container titleCmp = BoxLayout.encloseY(
                 FlowLayout.encloseIn(menuButton),
                 BorderLayout.centerAbsolute(
@@ -112,6 +112,7 @@ public class AffichageEquipeJoueur extends SideMenuBaseForm
                                     {
                                     }
            Button favoriss = new Button("Favoris");
+           
 
         favoriss.addActionListener(new ActionListener() {
       
@@ -150,7 +151,7 @@ public class AffichageEquipeJoueur extends SideMenuBaseForm
             
             Toolbar tb = f2.getToolbar();
             
-            tb.addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, e->{
+            tb.addMaterialCommandToRightBar("Back", FontImage.MATERIAL_ARROW_BACK, e->{
             
             f.showBack();
             
@@ -174,7 +175,8 @@ public class AffichageEquipeJoueur extends SideMenuBaseForm
             
       });
                             Button favoris = new Button("Favoris");
-
+FontImage add = FontImage.createMaterial(FontImage.MATERIAL_FAVORITE, "Label", 10);
+           favoris.setIcon(add);
         favoris.addActionListener(new ActionListener() {
       
             
