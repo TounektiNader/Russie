@@ -171,7 +171,7 @@ public class LoginForm extends Form {
          
         });
         
-        Button createNewAccount = new Button("CREATE NEW ACCOUNT");
+        Button createNewAccount = new Button("S'INSCRIRE");
         createNewAccount.setUIID("CreateNewAccountButton");
         createNewAccount.addActionListener(e -> {
             /**
