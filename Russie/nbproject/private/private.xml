@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
 <<<<<<< HEAD
+        <group/>
+=======
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/21650/Documents/GitHub/Russie/Russie/src/com/codename1/uikit/materialscreens/CadeauForm.java</file>
+            <file>file:/C:/Users/21650/Documents/GitHub/Russie/Russie/src/com/codename1/uikit/materialscreens/AffichageEquipeJoueur.java</file>
+            <file>file:/C:/Users/21650/Documents/GitHub/Russie/Russie/src/com/codename1/uikit/materialscreens/AffichageTop5.java</file>
+        </group>
+=======
             <file>file:/C:/Users/Ouss'Hr/Documents/GitHub/Russie/Russie/src/com/codename1/uikit/materialscreens/MSUIKit.java</file>
             <file>file:/C:/Users/Ouss'Hr/Documents/GitHub/Russie/Russie/src/com/mycompagny/Service/Authentification.java</file>
             <file>file:/C:/Users/Ouss'Hr/Documents/GitHub/Russie/Russie/src/com/codename1/uikit/materialscreens/HomeForm.java</file>
@@ -30,5 +37,7 @@
         <group/>
 >>>>>>> c09e02ba6d4b92be2fef4aff4c4469f6e08bbcf1
 >>>>>>> 7a021a4008e10895a4d3517323f20cc4ac99ac79
+>>>>>>> 04b2ae910487b3c159870d64cdd237ad8a94d2f9
+>>>>>>> ee1fed01de47a1fea526ff79103abbd2f88c6e07
     </open-files>
 </project-private>
