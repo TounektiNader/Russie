@@ -5,11 +5,13 @@
  */
 package com.mycompagny.Service;
 
+import com.codename1.components.InfiniteProgress;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
 import com.company.Entites.Bet;
 import com.company.Entites.Equipe;
@@ -161,6 +163,11 @@ public class BetService {
 
             }
         });
+        
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }
@@ -185,6 +192,11 @@ public class BetService {
                 
             }
         });
+                
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
           
         return (int)sum;
@@ -210,6 +222,11 @@ public class BetService {
                 
             }
         });
+                
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
           
         return (int)sum;
@@ -235,6 +252,11 @@ public class BetService {
                 
             }
         });
+                
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
           
         return (int)sum;

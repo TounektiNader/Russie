@@ -100,8 +100,20 @@ public class ServiceHotel {
         ArrayList<String> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 
+//<<<<<<< HEAD
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
 
+<<<<<<< HEAD
+=======
+        con.setUrl("http://127.0.0.1:8000/hotelcount");
+
+
+        con.setUrl("http://127.0.0.1:8000/hotelcount");
+        //con.setUrl("http://127.0.0.1:8001/hotelcount");
+
+
+
+>>>>>>> ee1fed01de47a1fea526ff79103abbd2f88c6e07
 
         con.setUrl("http://127.0.0.1:8000/hotelcount");
 

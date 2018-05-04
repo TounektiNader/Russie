@@ -180,6 +180,7 @@ public class ServiceResultat {
         });
          InfiniteProgress prog = new InfiniteProgress();
         Dialog dlg = prog.showInifiniteBlocking();
+          
         con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
        
@@ -220,6 +221,11 @@ public class ServiceResultat {
 
             }
         });
+        
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
         return idequipe;
     }
@@ -255,6 +261,11 @@ public class ServiceResultat {
 
             }
         });
+        
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
        
        return s ;           
@@ -278,6 +289,11 @@ public class ServiceResultat {
 //            Dialog.show("error", "login ou pwd invalid", "ok", null);
 //            }
         });
+        
+         InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+          
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
     }
 

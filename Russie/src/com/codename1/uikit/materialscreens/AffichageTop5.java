@@ -63,6 +63,8 @@ public class AffichageTop5 extends SideMenuBaseForm
         Toolbar tb = f.getToolbar();
         tb.setTitleCentered(false);
         
+            
+            
           if(WalkthruForm.capturedImage==null){
            profilePic =  res.getImage("user.png");     }
      
@@ -74,8 +76,8 @@ public class AffichageTop5 extends SideMenuBaseForm
         
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
-        Label tit = new Label("Equipes", "Title");
-         tit.getAllStyles().setFgColor(0xE12336);
+        Label tit = new Label("Liste des Favoris", "Title");
+         tit.getAllStyles().setFgColor(0xfc2a30);
         Container titleCmp = BoxLayout.encloseY(
                 FlowLayout.encloseIn(menuButton),
                 BorderLayout.centerAbsolute(
@@ -88,15 +90,14 @@ public class AffichageTop5 extends SideMenuBaseForm
         );
 
         tb.setTitleComponent(titleCmp);
-        Label Liste = new Label("Pariez");
+        
 
         Label Liste0 = new Label(" ");
-        Liste.getAllStyles().setFgColor(0xE12336);
 
         Container listCon = BoxLayout.encloseY(
                 BorderLayout.centerAbsolute(
                         BoxLayout.encloseY(
-                                Liste
+                                
                         )
                 ),
                 GridLayout.encloseIn(2)
