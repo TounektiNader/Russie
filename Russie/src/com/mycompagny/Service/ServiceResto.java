@@ -96,35 +96,8 @@ public class ServiceResto {
         ArrayList<String> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 
-<<<<<<< HEAD
-
         con.setUrl("http://127.0.0.1:8000/restocount");
 
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        con.setUrl("http://127.0.0.1:8000/restocount");
-
-
-    
-=======
-<<<<<<< HEAD
-=======
-//        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
->>>>>>> 7a021a4008e10895a4d3517323f20cc4ac99ac79
-
-        con.setUrl("http://127.0.0.1:8000/restocount");
-
-
-     //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-//        con.setUrl("http://127.0.0.1:8000/restocount");
-
-     //   con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-//        con.setUrl("http://127.0.0.1:8000/restocount");
->>>>>>> 857e4402811a22b9e269b408bbb9c33f03420742
-
->>>>>>> 371aa613c0b33cd91c0173d451c0af03d2a0641f
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override
