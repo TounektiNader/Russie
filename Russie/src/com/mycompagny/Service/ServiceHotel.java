@@ -101,49 +101,9 @@ public class ServiceHotel {
         ConnectionRequest con = new ConnectionRequest();
 
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-
-=======
-<<<<<<< HEAD
-        con.setUrl("http://127.0.0.1:8000/hotelcount");
-=======
 
         con.setUrl("http://127.0.0.1:8000/hotelcount");
-        //con.setUrl("http://127.0.0.1:8001/hotelcount");
->>>>>>> 822277305a3a1db7e3ba5fd5967e5e0f1d1d9c28
->>>>>>> 82a33ede1017194d51d53f14160065b90c53ac0c
-
-
->>>>>>> 1467675d20a2d3972df70cd31d0c27e31052f238
->>>>>>> 00f33bf6d9123248eda29dabdb2b74090d19a5a1
->>>>>>> 9a5aa01450c0f0fb3420bffec58ca861588e28e1
->>>>>>> 7a021a4008e10895a4d3517323f20cc4ac99ac79
-
->>>>>>> 857e4402811a22b9e269b408bbb9c33f03420742
-        con.setUrl("http://127.0.0.1:8000/hotelcount");
-
-<<<<<<< HEAD
-//       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-      //  con.setUrl("http://127.0.0.1:8000/hotelcount");
-
-
-
-//       con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
-       // con.setUrl("http://127.0.0.1:8000/hotelcount");
-
-=======
->>>>>>> 7a021a4008e10895a4d3517323f20cc4ac99ac79
 
 
         con.addResponseListener(new ActionListener<NetworkEvent>() 
