@@ -96,6 +96,7 @@ public class ServiceResto {
         ArrayList<String> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 
+<<<<<<< HEAD
 
         con.setUrl("http://127.0.0.1:8000/restocount");
 
@@ -127,6 +128,10 @@ public class ServiceResto {
 //        con.setUrl("http://127.0.0.1:8000/restocount");
 
 
+=======
+        con.setUrl("http://127.0.0.1:8000/restocount");
+
+>>>>>>> 04b2ae910487b3c159870d64cdd237ad8a94d2f9
         con.addResponseListener(new ActionListener<NetworkEvent>() 
         {
             @Override
@@ -149,6 +154,7 @@ public class ServiceResto {
 
             }
         });
+        
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }

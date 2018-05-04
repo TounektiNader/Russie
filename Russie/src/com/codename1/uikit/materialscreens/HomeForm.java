@@ -60,7 +60,11 @@ public class HomeForm extends SideMenuBaseForm{
         );
 
         tb.setTitleComponent(titleCmp);
+        
+        
+        
        
+        
 
 //add(gov);
 //gov.getAllStyles().setMargin(LEFT, 0);
@@ -70,7 +74,7 @@ public class HomeForm extends SideMenuBaseForm{
         getUnselectedStyle().setBackgroundType(Style.BACKGROUND_GRADIENT_RADIAL);
         getUnselectedStyle().setBackgroundGradientEndColor(0xFFFFFF);
         getUnselectedStyle().setBackgroundGradientStartColor(0xFFFFFF);
-        setupSideMenu(res);
+        
         
         
         f3= new Form("Nouvelle actualté");
@@ -78,9 +82,12 @@ public class HomeForm extends SideMenuBaseForm{
         btnaff.setIcon(FontImage.createMaterial(FontImage.MATERIAL_BOOK, btnaff.getUnselectedStyle()));
          btnajout= new Button("Nouvelle actualité");
  btnajout.setIcon(FontImage.createMaterial(FontImage.MATERIAL_ADD, btnajout.getUnselectedStyle()));
-        f.add(btnaff);
+            
+         f.add(btnaff);
         f.add(btnajout);
       
+       
+        
         btnaff.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,7 +104,7 @@ public class HomeForm extends SideMenuBaseForm{
             });
             }
         });
-        
+        f.show();
         btnajout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,6 +121,7 @@ public class HomeForm extends SideMenuBaseForm{
             });
             }
         });
+     setupSideMenu(res);  
     }
     
     
@@ -129,6 +137,8 @@ public class HomeForm extends SideMenuBaseForm{
 
     @Override
     protected void showOtherForm(Resources res) {
+         new HomeForm(res).show();
+         
     }
     
    

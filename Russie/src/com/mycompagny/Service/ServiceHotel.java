@@ -100,6 +100,7 @@ public class ServiceHotel {
         ArrayList<String> listTasks = new ArrayList<>();
         ConnectionRequest con = new ConnectionRequest();
 
+<<<<<<< HEAD
 //        con.setUrl("http://localhost/validationweb/russia/web/app_dev.php/villesjson");
 
         con.setUrl("http://127.0.0.1:8000/hotelcount");
@@ -110,9 +111,10 @@ public class ServiceHotel {
 
 
 
+=======
+>>>>>>> 04b2ae910487b3c159870d64cdd237ad8a94d2f9
 
         con.setUrl("http://127.0.0.1:8000/hotelcount");
-
 
 
         con.addResponseListener(new ActionListener<NetworkEvent>() 
@@ -137,6 +139,7 @@ public class ServiceHotel {
 
             }
         });
+        
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }

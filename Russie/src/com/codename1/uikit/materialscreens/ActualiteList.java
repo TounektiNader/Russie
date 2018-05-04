@@ -122,17 +122,16 @@ f.addComponent(l);
             del.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent k) {
-
+     
                     Dialog d = new Dialog();
 
-                    if (Dialog.show("Confirmation", "delete this product??", "Ok", "Annuler")) {
+                    if (Dialog.show("Confirmation", "delete this news??", "Ok", "Annuler")) {
                         ConnectionRequest req = new ConnectionRequest();
 
-                        req.setUrl("http://localhost/ValidationWeb/russia/web/app_dev.php/suppriactuj/"
+                        req.setUrl("http://127.0.0.1:8000/suppriactuj/"
                                 + pr.getIdactualite());
                         System.out.println(pr.getIdactualite());
                         NetworkManager.getInstance().addToQueue(req);
-                        
                         ActualiteList pc = new ActualiteList(res);
                         pc.getF().show();
 
@@ -196,10 +195,18 @@ f.addComponent(l);
                         int deviceWidth = Display.getInstance().getDisplayWidth() / 4;
                                 Image placeholder = Image.createImage(deviceWidth, deviceWidth); //square image set to 10% of screen width
                                 EncodedImage encImage = EncodedImage.createFromImage(placeholder, false);
+                               if(pr.getImage()==null){
+                               
+                                label.setIcon(URLImage.createToStorage(encImage,
+                                        "Large_" + url2 +"icon.png"+
+                                                "", url +"icon.png"+
+                                                        "", URLImage.RESIZE_SCALE_TO_FILL));
+                               }
+                               else{
                                 label.setIcon(URLImage.createToStorage(encImage,
                                         "Large_" + url2 +pr.getImage()+
                                                 "", url +pr.getImage()+
-                                                        "", URLImage.RESIZE_SCALE_TO_FILL));
+                                                        "", URLImage.RESIZE_SCALE_TO_FILL));}
                         c.add(label);
                         Container cnt = new Container(new BoxLayout(BoxLayout.Y_AXIS));
                         cnt.add(pr.getTitre());

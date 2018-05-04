@@ -20,11 +20,16 @@
 package com.codename1.uikit.materialscreens;
 
 import com.codename1.charts.ChartComponent;
+import com.codename1.charts.models.CategorySeries;
 import com.codename1.charts.models.XYMultipleSeriesDataset;
 import com.codename1.charts.models.XYSeries;
+import com.codename1.charts.renderers.DefaultRenderer;
+import com.codename1.charts.renderers.SimpleSeriesRenderer;
 import com.codename1.charts.renderers.XYMultipleSeriesRenderer;
 import com.codename1.charts.renderers.XYSeriesRenderer;
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.charts.views.CubicLineChart;
+import com.codename1.charts.views.PieChart;
 import com.codename1.charts.views.PointStyle;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
@@ -41,20 +46,31 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.table.TableModel;
 import com.codename1.ui.util.Resources;
+import com.company.Entites.Bet;
+import com.company.Entites.User;
+import com.company.utils.Local;
+import com.mycompagny.Service.BetService;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Shai Almog
  */
 public class StatsForm extends SideMenuBaseForm {
-    private static final int[] COLORS = {0xf8e478, 0x60e6ce, 0x878aee};
-    private static final String[] LABELS = {"Gain", "Perte", "En cours"};
+    BetService bt = new BetService();
+       Local dblocal = new Local();
+    User u = dblocal.getUser();
+    List<Bet> listBet = new ArrayList<Bet>();
+
+//    private static final int[] COLORS = {0xf8e478, 0x60e6ce, 0x878aee};
+  //  private static final String[] LABELS = {"Gain", "Perte", "En cours"};
 
     public StatsForm(Resources res) {
         super(new BorderLayout());
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        Image profilePic = res.getImage("user-picture.png");        
+        Image profilePic = res.getImage("russia2018.jpg");        
         Image tintedImage = Image.createImage(profilePic.getWidth(), profilePic.getHeight());
         Graphics g = tintedImage.getGraphics();
         g.drawImage(profilePic, 0, 0);
@@ -69,7 +85,7 @@ public class StatsForm extends SideMenuBaseForm {
 
         Button settingsButton = new Button("");
         settingsButton.setUIID("Title");
-        FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_SETTINGS);
+        
         
         Label space = new Label("", "TitlePictureSpace");
         space.setShowEvenIfBlank(true);
@@ -80,8 +96,8 @@ public class StatsForm extends SideMenuBaseForm {
                 add(BorderLayout.CENTER, space).
                 add(BorderLayout.SOUTH, 
                         FlowLayout.encloseIn(
-                                new Label("  Jennifer ", "WelcomeBlue"),
-                                new Label("Wilson", "WelcomeWhite")
+                                new Label("Statistiques ", "WelcomeBlue"),
+                                new Label(" Mes Bets", "WelcomeWhite")
                         ));
         titleComponent.setUIID("BottomPaddingContainer");
         tb.setTitleComponent(titleComponent);
@@ -91,94 +107,98 @@ public class StatsForm extends SideMenuBaseForm {
         add(BorderLayout.NORTH, separator);
         
 
-        XYMultipleSeriesDataset multi = new XYMultipleSeriesDataset();
-
-        XYSeries seriesXY = new XYSeries("AAA", 0);
-        multi.addSeries(seriesXY);
-        seriesXY.add(1, 1);
-        seriesXY.add(2, 5);
-        seriesXY.add(3, 6);
-        seriesXY.add(4, 7);
-        seriesXY.add(5, 8);
-       
-
-        seriesXY = new XYSeries("BBB", 0);
-        multi.addSeries(seriesXY);
-        seriesXY.add(1,5);
-        seriesXY.add(2, 3);
-        seriesXY.add(3, 4);
-        seriesXY.add(4, 1);
-        seriesXY.add(5, 3);
-       
-
-        XYMultipleSeriesRenderer renderer = createChartMultiRenderer();
-        
-        CubicLineChart chart = new CubicLineChart(multi, renderer,
-                0.5f);
-        
-        
-        Container enclosure = BorderLayout.center(new ChartComponent(chart)).
-                add(BorderLayout.NORTH, FlowLayout.encloseCenter(
-                        new Label(LABELS[0], colorCircle(COLORS[0])),
-                        new Label(LABELS[1], colorCircle(COLORS[1])),
-                        new Label(LABELS[2], colorCircle(COLORS[2]))
-                ));
-        
-        add(BorderLayout.CENTER, 
-                enclosure);
+       Bet betGain = new Bet(bt.getbetgain(u.getId()),"Gain");
+       Bet betPerte = new Bet(bt.getbetPerte(u.getId()),"Perte");
+       Bet betCours = new Bet(bt.getbetCours(u.getId()),"Traite");
+         listBet.add(betGain);
+         listBet.add(betPerte);
+         listBet.add(betCours);
+          
+         createPieChartForm();
         
         setupSideMenu(res);
     }
 
-    private Image colorCircle(int color) {
-        int size = Display.getInstance().convertToPixels(3);
-        Image i = Image.createImage(size, size, 0);
-        Graphics g = i.getGraphics();
-        g.setColor(color);
-        g.fillArc(0, 0, size, size, 0, 360);
-        return i;
+  
+      private DefaultRenderer buildCategoryRenderer(int[] colors) {
+        DefaultRenderer renderer = new DefaultRenderer();
+        renderer.setLabelsTextSize(15);
+        renderer.setLabelsColor(ColorUtil.BLACK);
+        renderer.setLegendTextSize(15);
+        renderer.setMargins(new int[]{20, 30, 15, 20});
+        for (int color : colors) {
+            SimpleSeriesRenderer r = new SimpleSeriesRenderer();
+            r.setColor(color);
+            renderer.addSeriesRenderer(r);
+        }
+        return renderer;
     }
+
+    /**
+     * Builds a category series using the provided values.
+     *
+     * @param titles the series titles
+     * @param values the values
+     * @return the category series
+     */
+    protected CategorySeries buildCategoryDataset(String title,ArrayList<Bet>total) {
+        CategorySeries series = new CategorySeries(title);
+        int k = 0;
+        for (Bet value : listBet) {
+            try {
+            double v = value.getValeurr();System.out.println("v value : "+v);
+            int s = total.size();System.out.println("s value : "+s);
+            double quant = (v/s)*100;
+ 
+                System.out.println(quant);
+            series.add("" + value.getEtat(),(int) quant);
+            } catch (ArithmeticException e) {
+            }
+            
+        }
+
+        return series;
+    }
+
+    public void createPieChartForm() {
+
+        // Generate the values
+       
+       ArrayList<Bet> total = new ArrayList<Bet>();
+    
+        total=bt.getList2(u.getId());
+        // Set up the renderer
+        int[] colors = new int[]{ColorUtil.BLUE, ColorUtil.GREEN, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.LTGRAY};
+        DefaultRenderer renderersrer = buildCategoryRenderer(colors);
+        renderersrer.setZoomButtonsVisible(true);
+        renderersrer.setZoomEnabled(true);
+        renderersrer.setChartTitleTextSize(20);
+        renderersrer.setDisplayValues(true);
+        renderersrer.setShowLabels(true);
+        
+        SimpleSeriesRenderer r = renderersrer.getSeriesRendererAt(0);
+        r.setGradientEnabled(true);
+        r.setGradientStart(0, ColorUtil.BLUE);
+        r.setGradientStop(0, ColorUtil.GREEN);
+        r.setHighlighted(true);
+
+        // Create the chart ... pass the values and renderer to the chart object.
+        PieChart chart = new PieChart(buildCategoryDataset("Project budget",total), renderersrer);
+
+        // Wrap the chart in a Component so we can add it to a form
+        ChartComponent c = new ChartComponent(chart);
+
+        // Create a form and show it.
+    
+        addComponent(BorderLayout.CENTER, c);
+        
+    }
+     
     
     @Override
     protected void showOtherForm(Resources res) {
         new ProfileForm(res).show();
     }
 
-    private XYMultipleSeriesRenderer createChartMultiRenderer() {
-        XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
-        for(int color : COLORS) {
-            XYSeriesRenderer r = new XYSeriesRenderer();
-            r.setColor(color);
-            renderer.addSeriesRenderer(r);
-            r.setFillPoints(false);
-            XYSeriesRenderer.FillOutsideLine outline = new XYSeriesRenderer.FillOutsideLine(XYSeriesRenderer.FillOutsideLine.Type.BELOW);
-            outline.setColor(color);
-            r.addFillOutsideLine(outline);
-            r.setLineWidth(5);
-        }
-        renderer.setPointSize(5f);
-        renderer.setLabelsColor(0);
-        renderer.setBackgroundColor(0xffffffff);
-        renderer.setApplyBackgroundColor(true);
-        renderer.setAxesColor(COLORS[0]);
-
-        renderer.setXTitle("");
-        renderer.setYTitle("");
-        renderer.setAxesColor(0xcccccc);
-        renderer.setLabelsColor(0);
-        renderer.setXLabels(5);
-        renderer.setYLabels(5);
-        renderer.setShowGrid(true);
-        
-        renderer.setMargins(new int[] {0, 0, 0, 0});
-        renderer.setMarginsColor(0xffffff);
-
-        renderer.setShowLegend(false);
-        
-        renderer.setXAxisMin(3);
-        renderer.setXAxisMax(8);
-        renderer.setYAxisMin(0);
-        renderer.setYAxisMax(10);
-        return renderer;
-    }
+  
 }

@@ -121,6 +121,9 @@ public class ServiceCafe {
 
             }
         });
+        InfiniteProgress prog = new InfiniteProgress();
+        Dialog dlg = prog.showInifiniteBlocking();
+        con.setDisposeOnCompletion(dlg);
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listTasks;
     }
